@@ -197,6 +197,37 @@
             meta.description = "Build the handbook site into ./site (run from the repo)";
           };
 
+          # Generate a Software Bill of Materials (CycloneDX + SPDX) for the
+          # runtime closure of the timvim package, plus a Markdown summary for
+          # PR comments / release notes. Writes into ./sbom.
+          apps.sbom = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-sbom" ''
+                set -euo pipefail
+                # sbomnix from nixpkgs-stable (the unstable build is broken by a
+                # Python 3.14 dep); this also puts the stable overlay to use.
+                export PATH=${
+                  pkgs.lib.makeBinPath [
+                    pkgs.stable.sbomnix
+                    pkgs.python3
+                    pkgs.coreutils
+                    pkgs.nix
+                  ]
+                }:$PATH
+                mkdir -p sbom
+                echo "→ Generating SBOM for the timvim runtime closure…"
+                sbomnix ${wrappedNeovim} \
+                  --cdx sbom/timvim.cdx.json \
+                  --spdx sbom/timvim.spdx.json \
+                  --csv sbom/timvim.csv
+                python3 ${./lib/sbom-summary.py} sbom/timvim.cdx.json > sbom/SBOM.md
+                echo "→ Wrote sbom/timvim.{cdx.json,spdx.json,csv} and sbom/SBOM.md"
+              ''
+            );
+            meta.description = "Generate a CycloneDX + SPDX SBOM for the timvim package";
+          };
+
           # Regenerate the keymap reference + keyboard SVGs from timvim's LIVE
           # keymaps (built Neovim queried headless) so the docs never drift from
           # config. Writes into ./docs — run from the repo root.

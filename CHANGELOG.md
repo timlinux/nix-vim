@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   never drift from the configuration.
 - Brand-coloured SVG diagrams (architecture, leader-key map, six keyboard
   layouts, completion keys) using the timvim `kartozaColors` palette.
+- **Software Bill of Materials** — `nix run .#sbom` produces CycloneDX + SPDX
+  SBOMs (plus a CSV and a Markdown summary) for the runtime closure. CI uploads
+  them as an artifact and surfaces the summary table in every PR comment;
+  releases attach the CycloneDX + SPDX files and include the summary in the
+  notes.
 - `nix run .#handbook` and `nix run .#handbook-build` convenience apps.
 
 ### Changed

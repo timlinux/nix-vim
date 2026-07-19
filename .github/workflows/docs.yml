@@ -93,11 +93,57 @@ jobs:
           retention-days: 7
 
   # ---------------------------------------------------------------------
+  # SBOM — every trigger. CycloneDX + SPDX for the runtime closure, uploaded
+  # as an artifact; the Markdown summary is surfaced in the PR comment.
+  # ---------------------------------------------------------------------
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    outputs:
+      sbom-url: ${{ steps.upload.outputs.artifact-url }}
+      summary: ${{ steps.gen.outputs.summary }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+
+      - name: Generate SBOM (nix run .#sbom)
+        id: gen
+        run: |
+          set -euo pipefail
+          nix run .#sbom
+          {
+            echo "summary<<SBOM_EOF"
+            cat sbom/SBOM.md
+            echo "SBOM_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload SBOM artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: timvim-sbom
+          path: |
+            sbom/timvim.cdx.json
+            sbom/timvim.spdx.json
+            sbom/timvim.csv
+            sbom/SBOM.md
+          retention-days: 7
+
+  # ---------------------------------------------------------------------
   # PR comment linking to the PDF artifact (create once, update thereafter).
   # ---------------------------------------------------------------------
   pr-comment:
-    name: Comment PDF link on PR
-    needs: pdf
+    name: Comment PDF + SBOM on PR
+    needs: [pdf, sbom]
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
@@ -106,9 +152,14 @@ jobs:
         with:
           script: |
             const marker = '<!-- timvim-handbook-pdf -->';
+            const sbomSummary = ${{ toJSON(needs.sbom.outputs.summary) }};
             const body = `${marker}\n📄 **Handbook PDF** for this PR (\`${{ needs.pdf.outputs.pdf-name }}\`) is ready.\n\n`
               + `Download it from the [workflow artifacts](${{ toJSON(needs.pdf.outputs.pdf-url) }}) `
-              + `(short-lived, 7 days). The site preview publishes to GitHub Pages once this merges to \`main\`.`;
+              + `(short-lived, 7 days). The site preview publishes to GitHub Pages once this merges to \`main\`.\n\n`
+              + `---\n\n`
+              + `${sbomSummary}\n\n`
+              + `Download the full [CycloneDX + SPDX SBOM](${{ toJSON(needs.sbom.outputs.sbom-url) }}) `
+              + `(short-lived, 7 days).`;
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner, repo: context.repo.repo,
               issue_number: context.issue.number,

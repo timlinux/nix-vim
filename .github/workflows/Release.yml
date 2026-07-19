@@ -52,6 +52,9 @@ jobs:
       - name: Build handbook PDF
         run: nix run .#handbook-pdf -- "${{ steps.ver.outputs.pdf }}"
 
+      - name: Generate SBOM (CycloneDX + SPDX)
+        run: nix run .#sbom
+
       - name: Compose release notes
         id: notes
         run: |
@@ -75,6 +78,12 @@ jobs:
             echo "📄 **[Download the handbook PDF](https://github.com/$REPO/releases/download/$TAG/$PDF)** (attached to this release)."
             echo ""
             echo "📚 **[Browse the online handbook](https://timlinux.github.io/nix-vim/)**."
+            echo ""
+            echo "---"
+            echo ""
+            cat sbom/SBOM.md
+            echo ""
+            echo "_The CycloneDX (\`timvim.cdx.json\`) and SPDX (\`timvim.spdx.json\`) SBOMs are attached to this release._"
           } >> "$NOTES"
           echo "path=$NOTES" >> "$GITHUB_OUTPUT"
 
@@ -84,4 +93,7 @@ jobs:
           name: ${{ steps.ver.outputs.tag }}
           tag_name: ${{ steps.ver.outputs.tag }}
           body_path: ${{ steps.notes.outputs.path }}
-          files: ${{ steps.ver.outputs.pdf }}
+          files: |
+            ${{ steps.ver.outputs.pdf }}
+            sbom/timvim.cdx.json
+            sbom/timvim.spdx.json

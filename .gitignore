@@ -65,3 +65,9 @@ timvim-handbook.pdf
 
 # mkdocs build output
 site/
+
+# SBOM output
+sbom/
+
+# mkdocs-material social/http cache
+http_cache.sqlite
