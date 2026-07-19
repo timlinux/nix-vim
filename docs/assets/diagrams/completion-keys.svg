@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="864" height="398" viewBox="0 0 864 398" font-family="Nunito,'Helvetica Neue',Arial,sans-serif">
+<rect width="864" height="398" fill="#FFFFFF"/>
+<text x="24" y="34" fill="#676869" font-size="12" font-weight="700" letter-spacing="3">TIMVIM · COMPLETION &amp; AI KEYS</text>
+<text x="24" y="62" fill="#383939" font-size="24" font-weight="800">Two systems, one muscle memory</text>
+<rect x="24" y="84" width="396" height="290" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<path d="M24,94 q0,-10 10,-10 h376 q10,0 10,10 v34 h-396 z" fill="#569FC6"/>
+<text x="40" y="114" fill="#FFFFFF" font-size="16" font-weight="800">Completion menu</text>
+<text x="404" y="114" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="end" opacity="0.9" font-family="JetBrains Mono,monospace">blink-cmp</text>
+<rect x="38" y="142" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="157" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-J&gt;</text>
+<text x="104" y="158" fill="#383939" font-size="13.5">Completion next</text>
+<rect x="25" y="170" width="394" height="34" fill="#F5F5F2"/>
+<rect x="38" y="176" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="191" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-K&gt;</text>
+<text x="104" y="192" fill="#383939" font-size="13.5">Completion prev</text>
+<rect x="38" y="210" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="225" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;Tab&gt;</text>
+<text x="104" y="226" fill="#383939" font-size="13.5">Confirm completion</text>
+<rect x="25" y="238" width="394" height="34" fill="#F5F5F2"/>
+<rect x="38" y="244" width="95" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="86" y="259" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">Ctrl+Space</text>
+<text x="147" y="260" fill="#383939" font-size="13.5">Trigger completion</text>
+<rect x="38" y="278" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="293" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-E&gt;</text>
+<text x="104" y="294" fill="#383939" font-size="13.5">Close completion</text>
+<rect x="25" y="306" width="394" height="34" fill="#F5F5F2"/>
+<rect x="38" y="312" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="327" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-F&gt;</text>
+<text x="104" y="328" fill="#383939" font-size="13.5">Scroll docs down</text>
+<rect x="38" y="346" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="64" y="361" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-D&gt;</text>
+<text x="104" y="362" fill="#383939" font-size="13.5">Scroll docs up</text>
+<rect x="444" y="84" width="396" height="290" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<path d="M444,94 q0,-10 10,-10 h376 q10,0 10,10 v34 h-396 z" fill="#06969A"/>
+<text x="460" y="114" fill="#FFFFFF" font-size="16" font-weight="800">Ghost text</text>
+<text x="824" y="114" fill="#FFFFFF" font-size="12" font-weight="700" text-anchor="end" opacity="0.9" font-family="JetBrains Mono,monospace">Copilot</text>
+<rect x="458" y="142" width="61" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="488" y="157" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;M-CR&gt;</text>
+<text x="533" y="158" fill="#383939" font-size="13.5">(panel) open</text>
+<rect x="445" y="170" width="394" height="34" fill="#F5F5F2"/>
+<rect x="458" y="176" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="484" y="191" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-Y&gt;</text>
+<text x="524" y="192" fill="#383939" font-size="13.5">Copilot: trigger or accept suggestion</text>
+<rect x="458" y="210" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="484" y="225" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;M-[&gt;</text>
+<text x="524" y="226" fill="#383939" font-size="13.5">Previous suggestion</text>
+<rect x="445" y="238" width="394" height="34" fill="#F5F5F2"/>
+<rect x="458" y="244" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="484" y="259" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;M-]&gt;</text>
+<text x="524" y="260" fill="#383939" font-size="13.5">Next suggestion</text>
+<rect x="458" y="278" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="484" y="293" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;C-]&gt;</text>
+<text x="524" y="294" fill="#383939" font-size="13.5">Dismiss suggestion</text>
+<rect x="445" y="306" width="394" height="34" fill="#F5F5F2"/>
+<rect x="458" y="312" width="52" height="22" rx="5" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="484" y="327" fill="#383939" font-size="12" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,monospace">&lt;M-l&gt;</text>
+<text x="524" y="328" fill="#383939" font-size="13.5">Accept suggestion</text>
+</svg>

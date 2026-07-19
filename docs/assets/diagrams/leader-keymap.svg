@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="466" viewBox="0 0 860 466" font-family="Nunito,'Helvetica Neue',Arial,sans-serif">
+<rect width="860" height="466" fill="#FFFFFF"/>
+<text x="24" y="34" fill="#676869" font-size="12" font-weight="700" letter-spacing="3">TIMVIM · LEADER KEY MAP</text>
+<text x="24" y="62" fill="#383939" font-size="24" font-weight="800">Press&#160; Space&#160; then a group letter</text>
+<rect x="536" y="20" width="10" height="10" rx="2" fill="#569FC6"/>
+<text x="551" y="29" fill="#676869" font-size="10">Find/Lang</text>
+<rect x="612" y="20" width="10" height="10" rx="2" fill="#06969A"/>
+<text x="627" y="29" fill="#676869" font-size="10">Git/VCS</text>
+<rect x="688" y="20" width="10" height="10" rx="2" fill="#DF9E2F"/>
+<text x="703" y="29" fill="#676869" font-size="10">Run/Debug</text>
+<rect x="764" y="20" width="10" height="10" rx="2" fill="#8A8B8B"/>
+<text x="779" y="29" fill="#676869" font-size="10">Aux/UI</text>
+<rect x="24" y="84" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="34" y="94" width="42" height="42" rx="6" fill="#569FC6"/>
+<text x="55" y="122" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">a</text>
+<text x="88" y="110" fill="#383939" font-size="15" font-weight="700">Assistant</text>
+<text x="88" y="129" fill="#676869" font-size="11.5">Claude + Copilot</text>
+<rect x="230" y="84" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="240" y="94" width="42" height="42" rx="6" fill="#06969A"/>
+<text x="261" y="122" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">b</text>
+<text x="294" y="110" fill="#383939" font-size="15" font-weight="700">Buffers</text>
+<text x="294" y="129" fill="#676869" font-size="11.5">Find &amp; swap buffers</text>
+<rect x="436" y="84" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="446" y="94" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="467" y="122" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">c</text>
+<text x="500" y="110" fill="#383939" font-size="15" font-weight="700">Code</text>
+<text x="500" y="129" fill="#676869" font-size="11.5">Format, rename, colour</text>
+<rect x="642" y="84" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="652" y="94" width="42" height="42" rx="6" fill="#DF9E2F"/>
+<text x="673" y="122" fill="#383939" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">d</text>
+<text x="706" y="110" fill="#383939" font-size="15" font-weight="700">Debug</text>
+<text x="706" y="129" fill="#676869" font-size="11.5">DAP &amp; breakpoints</text>
+<rect x="24" y="158" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="34" y="168" width="42" height="42" rx="6" fill="#569FC6"/>
+<text x="55" y="196" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">f</text>
+<text x="88" y="184" fill="#383939" font-size="15" font-weight="700">Files</text>
+<text x="88" y="203" fill="#676869" font-size="11.5">Find, grep, Yazi</text>
+<rect x="230" y="158" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="240" y="168" width="42" height="42" rx="6" fill="#06969A"/>
+<text x="261" y="196" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">g</text>
+<text x="294" y="184" fill="#383939" font-size="15" font-weight="700">Git</text>
+<text x="294" y="203" fill="#676869" font-size="11.5">Blame, hunks, diffs</text>
+<rect x="436" y="158" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="446" y="168" width="42" height="42" rx="6" fill="#06969A"/>
+<text x="467" y="196" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">h</text>
+<text x="500" y="184" fill="#383939" font-size="15" font-weight="700">Gitsigns</text>
+<text x="500" y="203" fill="#676869" font-size="11.5">Gitsigns hunks</text>
+<rect x="642" y="158" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="652" y="168" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="673" y="196" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">i</text>
+<text x="706" y="184" fill="#383939" font-size="15" font-weight="700">Image</text>
+<text x="706" y="203" fill="#676869" font-size="11.5">Image preview</text>
+<rect x="24" y="232" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="34" y="242" width="42" height="42" rx="6" fill="#569FC6"/>
+<text x="55" y="270" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">l</text>
+<text x="88" y="258" fill="#383939" font-size="15" font-weight="700">LSP</text>
+<text x="88" y="277" fill="#676869" font-size="11.5">Diagnostics &amp; Trouble</text>
+<rect x="230" y="232" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="240" y="242" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="261" y="270" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">m</text>
+<text x="294" y="258" fill="#383939" font-size="15" font-weight="700">Markdown</text>
+<text x="294" y="277" fill="#676869" font-size="11.5">Markdown (.md)</text>
+<rect x="436" y="232" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="446" y="242" width="42" height="42" rx="6" fill="#569FC6"/>
+<text x="467" y="270" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">n</text>
+<text x="500" y="258" fill="#383939" font-size="15" font-weight="700">Navigate</text>
+<text x="500" y="277" fill="#676869" font-size="11.5">LSP defs &amp; refs</text>
+<rect x="642" y="232" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="652" y="242" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="673" y="270" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">N</text>
+<text x="706" y="258" fill="#383939" font-size="15" font-weight="700">Notifications</text>
+<text x="706" y="277" fill="#676869" font-size="11.5">Notifications</text>
+<rect x="24" y="306" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="34" y="316" width="42" height="42" rx="6" fill="#06969A"/>
+<text x="55" y="344" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">o</text>
+<text x="88" y="332" fill="#383939" font-size="15" font-weight="700">GitHub</text>
+<text x="88" y="351" fill="#676869" font-size="11.5">Octo GitHub</text>
+<rect x="230" y="306" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="240" y="316" width="42" height="42" rx="6" fill="#DF9E2F"/>
+<text x="261" y="344" fill="#383939" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">r</text>
+<text x="294" y="332" fill="#383939" font-size="15" font-weight="700">Refactor</text>
+<text x="294" y="351" fill="#676869" font-size="11.5">Extract &amp; inline</text>
+<rect x="436" y="306" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="446" y="316" width="42" height="42" rx="6" fill="#06969A"/>
+<text x="467" y="344" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">s</text>
+<text x="500" y="332" fill="#383939" font-size="15" font-weight="700">Session</text>
+<text x="500" y="351" fill="#676869" font-size="11.5">Save &amp; restore</text>
+<rect x="642" y="306" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="652" y="316" width="42" height="42" rx="6" fill="#DF9E2F"/>
+<text x="673" y="344" fill="#383939" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">t</text>
+<text x="706" y="332" fill="#383939" font-size="15" font-weight="700">Toggles</text>
+<text x="706" y="351" fill="#676869" font-size="11.5">UI &amp; feature flags</text>
+<rect x="24" y="380" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="34" y="390" width="42" height="42" rx="6" fill="#DF9E2F"/>
+<text x="55" y="418" fill="#383939" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">T</text>
+<text x="88" y="406" fill="#383939" font-size="15" font-weight="700">Test</text>
+<text x="88" y="425" fill="#676869" font-size="11.5">Neotest</text>
+<rect x="230" y="380" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="240" y="390" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="261" y="418" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">x</text>
+<text x="294" y="406" fill="#383939" font-size="15" font-weight="700">Lists</text>
+<text x="294" y="425" fill="#676869" font-size="11.5">Quickfix &amp; symbols</text>
+<rect x="436" y="380" width="194" height="62" rx="8" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="446" y="390" width="42" height="42" rx="6" fill="#8A8B8B"/>
+<text x="467" y="418" fill="#FFFFFF" font-size="22" font-weight="800" text-anchor="middle" font-family="JetBrains Mono,monospace">z</text>
+<text x="500" y="406" fill="#383939" font-size="15" font-weight="700">Spell</text>
+<text x="500" y="425" fill="#676869" font-size="11.5">Spell</text>
+</svg>

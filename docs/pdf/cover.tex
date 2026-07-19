@@ -1,0 +1,54 @@
+% SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>
+% SPDX-License-Identifier: MIT
+%
+% Kartoza-branded cover page. Manual layout instead of \begin{titlepage}
+% because the latter can conflict with pandoc's L3-based shipout injection.
+% The build script (lib/docs-pdf.sh) copies the Kartoza horizontal logo into
+% pandoc's working directory as cover-banner.png.
+\begingroup
+\thispagestyle{empty}
+\pagecolor{textdefault}
+\color{surfacewhite}
+
+\vspace*{2cm}
+
+\begin{center}
+  \includegraphics[width=0.7\textwidth]{cover-banner.png}
+
+  \vspace{1.5cm}
+
+  \color{kartozaamber}\rule{0.55\textwidth}{2pt}
+
+  \vspace{1.5cm}
+
+  \color{surfacewhite}
+  {\fontsize{30}{36}\selectfont\bfseries timvim}
+
+  \vspace{0.5cm}
+
+  {\LARGE Handbook}
+
+  \vspace{2cm}
+
+  {\Large\color{kartozablue}\itshape
+   A declarative, Nix-built Neovim\\
+   for people who love their editor.}
+
+  \vfill
+
+  \color{kartozablue}
+  \small
+  {\bfseries Made with love by Kartoza}\\
+  \vspace{0.3cm}
+  kartoza.com\\
+  github.com/timlinux/nix-vim\\
+  \vspace{0.5cm}
+  \color{kartozagrey}\today
+\end{center}
+
+\newpage
+% Explicit white rather than \nopagecolor: transparent pages render dark in
+% some viewers/extractors.
+\pagecolor{surfacewhite}
+\color{textdefault}
+\endgroup
