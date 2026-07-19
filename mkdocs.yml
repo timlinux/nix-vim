@@ -1,0 +1,188 @@
+# SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>
+# SPDX-License-Identifier: MIT
+#
+# Handbook for timvim. Theming and visual styling follow the Kartoza approach
+# from kartoza/InfrastructureMapper and timlinux/qgis-dev-env (Material for
+# MkDocs + Kartoza brand tokens).
+site_name: timvim
+site_description: A fully declarative, Nix-built Neovim configuration with LSP, AI assistance, git tooling and a Kartoza-branded UI.
+site_url: https://timlinux.github.io/nix-vim/
+site_author: Kartoza
+copyright: >
+  &copy; Kartoza — Made with 💗 by
+  <a href="https://kartoza.com">Kartoza</a>
+  &middot; <a href="https://github.com/sponsors/timlinux">Donate</a>
+  &middot; <a href="https://github.com/timlinux/nix-vim">GitHub</a>
+
+repo_url: https://github.com/timlinux/nix-vim
+repo_name: timlinux/nix-vim
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  # Kartoza Brand Pack — logo + favicon (palette / type tokens live in
+  # stylesheets/kartoza-tokens.css, adapter in stylesheets/extra.css).
+  logo: assets/brand/kartoza-symbol-color.svg
+  favicon: assets/brand/favicon.png
+  font:
+    text: Nunito
+    code: JetBrains Mono
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/file-edit-outline
+    view: material/eye-outline
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/timlinux/nix-vim
+      name: GitHub repository
+    - icon: fontawesome/solid/heart
+      link: https://github.com/sponsors/timlinux
+      name: Sponsor on GitHub
+  generator: false
+
+extra_css:
+  - stylesheets/kartoza-tokens.css
+  - stylesheets/extra.css
+
+# Diagrams are authored as brand-coloured SVGs under docs/assets/diagrams/ so
+# they render identically on the site and in the PDF. Mermaid is intentionally
+# NOT used — it cannot render into the pandoc/pdflatex PDF build.
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 4
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path: [.]
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds: {case: lower}
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      lang: en
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - no-lightbox
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
+      strict: false
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - getting-started/index.md
+    - Install & Run: getting-started/installation.md
+    - Home Manager: getting-started/home-manager.md
+    - First Launch: getting-started/first-launch.md
+    - The Dashboard: getting-started/dashboard.md
+  - User Guide:
+    - user-guide/index.md
+    - Editing & Motion: user-guide/editing.md
+    - Completion & AI: user-guide/completion-ai.md
+    - Navigation & Search: user-guide/navigation.md
+    - Git Workflow: user-guide/git.md
+    - Diagnostics & LSP: user-guide/lsp.md
+    - Debugging: user-guide/debugging.md
+    - Refactoring: user-guide/refactoring.md
+    - Terminal & Files: user-guide/terminal-files.md
+    - Image Preview: user-guide/image-preview.md
+  - Keybindings:
+    - reference/index.md
+    - Keyboard Layouts: reference/keyboard.md
+    - Which-Key Menus: reference/which-key.md
+    - Full Keymap: reference/keymap.md
+    - Completion Keys: reference/completion.md
+  - Developer Guide:
+    - developer-guide/index.md
+    - Architecture: developer-guide/architecture.md
+    - Dev Shell: developer-guide/dev-shell.md
+    - Adding Plugins: developer-guide/adding-plugins.md
+    - Building & Testing: developer-guide/building.md
+    - The Docs Pipeline: developer-guide/docs-pipeline.md
+    - Release Process: developer-guide/release.md
+  - About:
+    - about/index.md
+    - Specification: about/specification.md
+    - Design Aesthetic: about/design.md
+    - Using AI: about/ai-policy.md
+    - Sponsors: about/sponsors.md

@@ -45,8 +45,11 @@
 
       -- Check if debugpy is available
       local handle = io.popen(python_cmd .. ' -c "import debugpy; print(debugpy.__version__)" 2>/dev/null')
-      local result = handle:read("*a")
-      handle:close()
+      local result = ""
+      if handle then
+        result = handle:read("*a") or ""
+        handle:close()
+      end
 
       if result == "" then
         vim.notify('debugpy not installed. Install with: pip install debugpy', vim.log.levels.ERROR)
@@ -125,8 +128,11 @@
     -- Add custom debug functions
     local function test_debug_connection(port)
       local handle = io.popen('timeout 5 nc -z localhost ' .. port .. ' 2>/dev/null && echo "CONNECTION_OK" || echo "CONNECTION_FAILED"')
-      local result = handle:read("*a")
-      handle:close()
+      local result = ""
+      if handle then
+        result = handle:read("*a") or ""
+        handle:close()
+      end
       
       return vim.trim(result) == "CONNECTION_OK"
     end
@@ -206,8 +212,11 @@
       end
 
       local handle = io.popen(python_cmd .. ' -c "import debugpy; print(debugpy.__version__)" 2>/dev/null')
-      local result = handle:read("*a")
-      handle:close()
+      local result = ""
+      if handle then
+        result = handle:read("*a") or ""
+        handle:close()
+      end
 
       if result == "" then
         vim.notify('debugpy not installed. Run: pip install debugpy', vim.log.levels.WARN)

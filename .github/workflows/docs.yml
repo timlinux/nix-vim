@@ -1,0 +1,220 @@
+# SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>
+# SPDX-License-Identifier: MIT
+#
+# Docs pipeline:
+#   * Pull requests  → build the handbook PDF, upload it as a short-lived (7-day)
+#     artifact, and post/refresh a PR comment linking to it.
+#   * Push to main   → build the PDF (artifact) AND publish the mkdocs site to
+#     GitHub Pages.
+#   * Releases are handled by Release.yml (long-lived PDF asset + changelog link).
+#
+# The keymap docs are regenerated from the LIVE config before each build so the
+# published docs never drift. GitHub Pages must be set to "Deploy from GitHub
+# Actions" in the repository settings.
+
+name: docs
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "lib/**"
+      - "config/**"
+      - ".github/workflows/docs.yml"
+      - "flake.nix"
+      - "flake.lock"
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "lib/**"
+      - "config/**"
+      - ".github/workflows/docs.yml"
+      - "flake.nix"
+      - "flake.lock"
+  workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
+
+jobs:
+  # ---------------------------------------------------------------------
+  # PDF — every trigger. Artifact so PRs (and main) get a linkable copy.
+  # ---------------------------------------------------------------------
+  pdf:
+    name: Build handbook PDF
+    runs-on: ubuntu-latest
+    outputs:
+      pdf-name: ${{ steps.name.outputs.name }}
+      pdf-url: ${{ steps.upload.outputs.artifact-url }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+
+      - name: Compute PDF filename
+        id: name
+        run: |
+          case "${{ github.event_name }}" in
+            pull_request) tag="pr-${{ github.event.pull_request.number }}" ;;
+            *)            tag="$(git rev-parse --short HEAD)" ;;
+          esac
+          echo "name=timvim-handbook-${tag}.pdf" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate keymap docs from live config
+        run: nix run .#handbook-keymaps
+
+      - name: Build PDF (nix run .#handbook-pdf)
+        run: nix run .#handbook-pdf -- "${{ steps.name.outputs.name }}"
+
+      - name: Upload PDF as short-lived artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.name.outputs.name }}
+          path: ${{ steps.name.outputs.name }}
+          retention-days: 7
+
+  # ---------------------------------------------------------------------
+  # SBOM — every trigger. CycloneDX + SPDX for the runtime closure, uploaded
+  # as an artifact; the Markdown summary is surfaced in the PR comment.
+  # ---------------------------------------------------------------------
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    outputs:
+      sbom-url: ${{ steps.upload.outputs.artifact-url }}
+      summary: ${{ steps.gen.outputs.summary }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+
+      - name: Generate SBOM (nix run .#sbom)
+        id: gen
+        run: |
+          set -euo pipefail
+          nix run .#sbom
+          {
+            echo "summary<<SBOM_EOF"
+            cat sbom/SBOM.md
+            echo "SBOM_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload SBOM artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: timvim-sbom
+          path: |
+            sbom/timvim.cdx.json
+            sbom/timvim.spdx.json
+            sbom/timvim.csv
+            sbom/SBOM.md
+          retention-days: 7
+
+  # ---------------------------------------------------------------------
+  # PR comment linking to the PDF artifact (create once, update thereafter).
+  # ---------------------------------------------------------------------
+  pr-comment:
+    name: Comment PDF + SBOM on PR
+    needs: [pdf, sbom]
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upsert PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = '<!-- timvim-handbook-pdf -->';
+            const sbomSummary = ${{ toJSON(needs.sbom.outputs.summary) }};
+            const body = `${marker}\n📄 **Handbook PDF** for this PR (\`${{ needs.pdf.outputs.pdf-name }}\`) is ready.\n\n`
+              + `Download it from the [workflow artifacts](${{ toJSON(needs.pdf.outputs.pdf-url) }}) `
+              + `(short-lived, 7 days). The site preview publishes to GitHub Pages once this merges to \`main\`.\n\n`
+              + `---\n\n`
+              + `${sbomSummary}\n\n`
+              + `Download the full [CycloneDX + SPDX SBOM](${{ toJSON(needs.sbom.outputs.sbom-url) }}) `
+              + `(short-lived, 7 days).`;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, body });
+            }
+
+  # ---------------------------------------------------------------------
+  # Site → GitHub Pages, only on merge to main.
+  # ---------------------------------------------------------------------
+  site:
+    name: Build mkdocs site
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+
+      - name: Regenerate keymap docs from live config
+        run: nix run .#handbook-keymaps
+
+      - name: Build site (nix run .#handbook-build)
+        run: nix run .#handbook-build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: site
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4

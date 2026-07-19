@@ -1,0 +1,81 @@
+% SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>
+% SPDX-License-Identifier: MIT
+%
+% Kartoza brand pack: Lato for prose, inconsolata for code (no JetBrains
+% Mono pdftex package exists in TeX Live; inconsolata is the brand-adjacent
+% match). Lato is loaded via pandoc's `-V fontfamily=lato`.
+\usepackage{inconsolata}
+
+% Kartoza brand palette — same tokens as docs/stylesheets/kartoza-tokens.css.
+\usepackage{xcolor}
+\definecolor{kartozablue}{HTML}{54A2CC}
+\definecolor{kartozaamber}{HTML}{EEB348}
+\definecolor{kartozagrey}{HTML}{8A8B8B}
+\definecolor{textdefault}{HTML}{383939}
+\definecolor{textmuted}{HTML}{676869}
+\definecolor{surfacewhite}{HTML}{FFFFFF}
+\definecolor{surfacecloud}{HTML}{F5F5F2}
+\definecolor{ruleline}{HTML}{D1D1D1}
+\definecolor{statussuccess}{HTML}{3C7D54}
+\definecolor{statuswarn}{HTML}{EEB348}
+\definecolor{statuserror}{HTML}{B0473C}
+
+% TikZ for the cover artwork.
+\usepackage{tikz}
+
+% Better section headings using the brand palette.
+\usepackage{titlesec}
+\titleformat{\section}
+  {\color{textdefault}\Large\bfseries\sffamily}
+  {\color{kartozablue}\thesection}{1em}{}
+\titleformat{\subsection}
+  {\color{textdefault}\large\bfseries\sffamily}
+  {\color{kartozablue}\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\color{textmuted}\normalsize\bfseries\sffamily}
+  {\color{kartozablue}\thesubsubsection}{1em}{}
+
+% Header / footer.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{kartozagrey}\sffamily timvim}
+\fancyhead[R]{\small\color{kartozagrey}\sffamily Handbook}
+\fancyfoot[C]{\small\color{textmuted}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{kartozablue}\hrule width\headwidth height\headrulewidth}
+
+% Body text colour.
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+\AtBeginDocument{\color{textdefault}}
+
+% Nicer code blocks with a Kartoza-blue left rule.
+% commandchars=\\\{\} must be present so pandoc's syntax-highlight macros
+% are interpreted rather than printed as text.
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  breaklines,
+  breakanywhere,
+  fontsize=\small,
+  frame=leftline,
+  framerule=1.5pt,
+  rulecolor=\color{kartozablue}
+}
+
+% Softer inline code appearance.
+\usepackage{soul}
+\definecolor{codebg}{HTML}{F5F5F2}
+
+% Tables get a subtle top and bottom rule.
+\usepackage{booktabs}
+
+% Compact list spacing.
+\usepackage{enumitem}
+\setlist{itemsep=0.2em, topsep=0.3em}
+
+% Cap every embedded figure (diagrams, keyboard maps) to the text width so wide
+% SVGs never overflow the A4 margins. graphicx is already loaded by pandoc;
+% cover.tex sets its own explicit widths which override this default.
+\setkeys{Gin}{width=\linewidth,keepaspectratio}

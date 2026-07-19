@@ -1,0 +1,99 @@
+# SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>
+# SPDX-License-Identifier: MIT
+#
+# Cut a GitHub release when a v* tag is pushed:
+#   * build the Kartoza-branded handbook PDF (keymaps regenerated from the live
+#     config first),
+#   * attach it as a long-lived release asset,
+#   * compose the release notes from the matching CHANGELOG.md section, with a
+#     direct link to the PDF and the published docs.
+name: 📦 Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+
+      - name: Resolve version + verify VERSION matches tag
+        id: ver
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          VER="$(tr -d '[:space:]' < VERSION)"
+          if [ "$TAG" != "v$VER" ]; then
+            echo "::warning::tag '$TAG' does not match VERSION 'v$VER'"
+          fi
+          echo "tag=$TAG"     >> "$GITHUB_OUTPUT"
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+          echo "pdf=timvim-handbook-${TAG}.pdf" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate keymap docs from live config
+        run: nix run .#handbook-keymaps
+
+      - name: Build handbook PDF
+        run: nix run .#handbook-pdf -- "${{ steps.ver.outputs.pdf }}"
+
+      - name: Generate SBOM (CycloneDX + SPDX)
+        run: nix run .#sbom
+
+      - name: Compose release notes
+        id: notes
+        run: |
+          set -euo pipefail
+          VER="${{ steps.ver.outputs.version }}"
+          TAG="${{ steps.ver.outputs.tag }}"
+          PDF="${{ steps.ver.outputs.pdf }}"
+          REPO="${{ github.repository }}"
+          NOTES=notes.md
+          # Extract the CHANGELOG section for this version.
+          awk -v v="$VER" '
+            $0 ~ "^## \\[" v "\\]" {grab=1; next}
+            grab && /^## \[/ {exit}
+            grab {print}
+          ' CHANGELOG.md > "$NOTES" || true
+          [ -s "$NOTES" ] || echo "Release $TAG." > "$NOTES"
+          {
+            echo ""
+            echo "---"
+            echo ""
+            echo "📄 **[Download the handbook PDF](https://github.com/$REPO/releases/download/$TAG/$PDF)** (attached to this release)."
+            echo ""
+            echo "📚 **[Browse the online handbook](https://timlinux.github.io/nix-vim/)**."
+            echo ""
+            echo "---"
+            echo ""
+            cat sbom/SBOM.md
+            echo ""
+            echo "_The CycloneDX (\`timvim.cdx.json\`) and SPDX (\`timvim.spdx.json\`) SBOMs are attached to this release._"
+          } >> "$NOTES"
+          echo "path=$NOTES" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ steps.ver.outputs.tag }}
+          tag_name: ${{ steps.ver.outputs.tag }}
+          body_path: ${{ steps.notes.outputs.path }}
+          files: |
+            ${{ steps.ver.outputs.pdf }}
+            sbom/timvim.cdx.json
+            sbom/timvim.spdx.json

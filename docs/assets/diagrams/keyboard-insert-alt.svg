@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1169" height="442" viewBox="0 0 1169 442" font-family="Nunito,'Helvetica Neue',Arial,sans-serif">
+<rect width="1169" height="442" fill="#FFFFFF"/>
+<text x="24" y="34" fill="#676869" font-size="12" font-weight="700" letter-spacing="3">TIMVIM · KEYBOARD MAP</text>
+<text x="24" y="62" fill="#383939" font-size="23" font-weight="800">Insert mode — Alt</text>
+<text x="24" y="82" fill="#676869" font-size="12.5">Alt accepts Copilot ghost text piecewise and cycles suggestions.</text>
+<rect x="895" y="52" width="11" height="11" rx="2" fill="#569FC6" stroke="#D1D1D1"/>
+<text x="911" y="62" fill="#676869" font-size="10.5">Custom</text>
+<rect x="959" y="52" width="11" height="11" rx="2" fill="#DF9E2F" stroke="#D1D1D1"/>
+<text x="975" y="62" fill="#676869" font-size="10.5">AI</text>
+<rect x="1023" y="52" width="11" height="11" rx="2" fill="#06969A" stroke="#D1D1D1"/>
+<text x="1039" y="62" fill="#676869" font-size="10.5">Motion</text>
+<rect x="1087" y="52" width="11" height="11" rx="2" fill="#FFFFFF" stroke="#D1D1D1"/>
+<text x="1103" y="62" fill="#676869" font-size="10.5">Default</text>
+<rect x="24" y="92" width="93" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="31" y="108" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Esc</text>
+<rect x="124" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="131" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">`</text>
+<rect x="193" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="200" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">1</text>
+<rect x="262" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="269" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">2</text>
+<rect x="331" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="338" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">3</text>
+<rect x="400" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="407" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">4</text>
+<rect x="469" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="476" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">5</text>
+<rect x="538" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="545" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">6</text>
+<rect x="607" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="614" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">7</text>
+<rect x="676" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="683" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">8</text>
+<rect x="745" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="752" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">9</text>
+<rect x="814" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="821" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">0</text>
+<rect x="883" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="890" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">-</text>
+<rect x="952" y="92" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="959" y="108" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">=</text>
+<rect x="1021" y="92" width="124" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="1028" y="108" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">⌫</text>
+<rect x="24" y="154" width="93" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="31" y="170" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">⇥</text>
+<rect x="124" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="131" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">q</text>
+<rect x="193" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="200" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">w</text>
+<rect x="262" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="269" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">e</text>
+<rect x="331" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="338" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">r</text>
+<rect x="400" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="407" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">t</text>
+<rect x="469" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="476" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">y</text>
+<rect x="538" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="545" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">u</text>
+<rect x="607" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="614" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">i</text>
+<rect x="676" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="683" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">o</text>
+<rect x="745" y="154" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="752" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">p</text>
+<rect x="814" y="154" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="821" y="170" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">[</text>
+<text x="845" y="184" fill="#FFFFFF" font-size="8" text-anchor="middle">previous</text>
+<text x="845" y="194" fill="#FFFFFF" font-size="8" text-anchor="middle">suggestion</text>
+<rect x="883" y="154" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="890" y="170" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">]</text>
+<text x="914" y="184" fill="#FFFFFF" font-size="8" text-anchor="middle">next</text>
+<text x="914" y="194" fill="#FFFFFF" font-size="8" text-anchor="middle">suggestion</text>
+<rect x="952" y="154" width="93" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="959" y="170" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">\</text>
+<rect x="24" y="216" width="112" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="31" y="232" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Caps</text>
+<rect x="143" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="150" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">a</text>
+<rect x="212" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="219" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">s</text>
+<rect x="281" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="288" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">d</text>
+<rect x="350" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="357" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">f</text>
+<rect x="419" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="426" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">g</text>
+<rect x="488" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="495" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">h</text>
+<rect x="557" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="564" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">j</text>
+<rect x="626" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="633" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">k</text>
+<rect x="695" y="216" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="702" y="232" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">l</text>
+<text x="726" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Accept</text>
+<text x="726" y="256" fill="#FFFFFF" font-size="8" text-anchor="middle">suggestion</text>
+<rect x="764" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="771" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">;</text>
+<rect x="833" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="840" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">'</text>
+<rect x="902" y="216" width="136" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="909" y="232" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">⏎</text>
+<rect x="24" y="278" width="143" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="31" y="294" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">⇧</text>
+<rect x="174" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="181" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">z</text>
+<rect x="243" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="250" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">x</text>
+<rect x="312" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="319" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">c</text>
+<rect x="381" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="388" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">v</text>
+<rect x="450" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="457" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">b</text>
+<rect x="519" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="526" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">n</text>
+<rect x="588" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="595" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">m</text>
+<rect x="657" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="664" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">,</text>
+<rect x="726" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="733" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">.</text>
+<rect x="795" y="278" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
+<text x="802" y="294" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">/</text>
+<rect x="864" y="278" width="167" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="871" y="294" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">⇧</text>
+<rect x="24" y="340" width="87" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="31" y="356" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Ctrl</text>
+<rect x="118" y="340" width="81" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="125" y="356" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Alt</text>
+<rect x="205" y="340" width="434" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="212" y="356" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Space</text>
+<rect x="646" y="340" width="81" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="653" y="356" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Alt</text>
+<rect x="734" y="340" width="87" height="55" rx="7" fill="#F5F5F2" stroke="#D1D1D1"/>
+<text x="741" y="356" fill="#676869" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">Ctrl</text>
+<text x="24" y="428" fill="#676869" font-size="10.5">Coloured keys are timvim custom bindings (generated from the live config). Grey = Vim default. Space is the leader.</text>
+</svg>

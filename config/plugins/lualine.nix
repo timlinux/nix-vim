@@ -7,7 +7,7 @@
         enable = true;
         theme = "auto";
         icons.enable = true;
-        disabledFiletypes = [ "alpha" ];
+        disabledFiletypes.statusline = [ "alpha" ];
       };
     };
     luaConfigRC = {
@@ -108,6 +108,10 @@
             section_separators = { left = "", right = "" },
             component_separators = { left = "\u{e0b0}", right = "\u{e0b2}" },
             globalstatus = true,
+            -- Hide the statusline on the alpha dashboard. This manual setup
+            -- overrides the nvf-generated config, so disabled_filetypes must be
+            -- declared here too (the module option alone has no effect).
+            disabled_filetypes = { statusline = { "alpha" }, winbar = {} },
           },
           sections = {
             -- All left content in section a for unified bubble bar

@@ -110,10 +110,7 @@
         };
         format.enable = true;
         format.type = [ "rustfmt" ];
-        lsp = {
-          enable = true;
-          opts = "\n            ['rust-analyzer'] = {\n              cargo = {allFeature = true},\n              checkOnSave = true;\n              procMacro = {\n                enable =true;\n              },\n            },\n            ";
-        };
+        lsp.enable = true;
       };
 
       yaml = {
@@ -121,6 +118,14 @@
         lsp.enable = true;
       };
 
+    };
+
+    # rust-analyzer tuning. Per nvf, init_options is auto-populated from
+    # settings["rust-analyzer"]; do not set init_options directly.
+    lsp.servers.rust-analyzer.settings.rust-analyzer = {
+      cargo.allFeatures = true;
+      checkOnSave = true;
+      procMacro.enable = true;
     };
   };
 }
