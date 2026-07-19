@@ -42,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `disabledFiletypes`, clipboard register order, rust LSP `settings`, and the
   `prettier` package (`nodePackages` removed upstream).
 - Stopped tracking `PROMPT.log` and `CLAUDE.md` (now gitignored; kept locally).
+- Restricted the flake to Linux systems (`x86_64-linux`, `aarch64-linux`). The
+  editor closure depends on Linux-native tooling (e.g. wayland) so it never
+  evaluated on Darwin, and nixpkgs unstable (26.11) has dropped `x86_64-darwin`
+  — this unbreaks `nix flake check --all-systems`.
 
 ### Fixed
 

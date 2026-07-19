@@ -29,11 +29,12 @@
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
+      # Linux only: the editor closure pulls in Linux-native tooling (e.g.
+      # wayland), so the package does not evaluate on Darwin. nixpkgs unstable
+      # (26.11) has also dropped x86_64-darwin support entirely.
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
       ];
 
       perSystem =
