@@ -105,6 +105,61 @@
                 --prefix PATH : ${pkgs.lib.makeBinPath runtimeDeps}
             '';
           };
+
+          # mkdocs stack for the handbook (mirrors the kartoza/InfrastructureMapper
+          # and timlinux/qgis-dev-env documentation toolchain). Used directly on
+          # PATH so `nix run .#handbook*` needs no nested `nix develop`.
+          docsPython = pkgs.python3.withPackages (ps: [
+            ps.mkdocs
+            ps.mkdocs-material
+            ps.mkdocs-material-extensions
+            ps.mkdocs-glightbox
+            ps.mkdocs-git-revision-date-localized-plugin
+          ]);
+
+          # TeX Live for the handbook PDF — scheme-medium + explicit extras
+          # keeps the closure lean (~500 MB) versus scheme-full.
+          pdfLatex = pkgs.texlive.combine {
+            inherit (pkgs.texlive)
+              scheme-medium
+              # preamble.tex
+              titlesec
+              sectsty
+              fancyhdr
+              fvextra
+              soul
+              booktabs
+              enumitem
+              xcolor
+              pgf
+              fontspec
+              unicode-math
+              selnolig
+              # pandoc's default LaTeX writer requirements
+              upquote
+              microtype
+              parskip
+              xurl
+              bookmark
+              hyperref
+              xkeyval
+              etoolbox
+              pdftexcmds
+              infwarerr
+              kvoptions
+              ltxcmds
+              # Kartoza brand-pack body font (Lato) + code font + transitive deps
+              lato
+              inconsolata
+              fontaxes
+              mweights
+              ;
+          };
+
+          docsPath = pkgs.lib.makeBinPath [
+            docsPython
+            pkgs.git
+          ];
         in
         {
           _module.args.pkgs = pkgs;
@@ -117,6 +172,79 @@
             meta = {
               description = "Launch timvim NVF config";
             };
+          };
+
+          # --- Handbook (mkdocs + PDF) convenience apps -------------------
+          apps.handbook = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-handbook" ''
+                export PATH=${docsPath}:$PATH
+                exec mkdocs serve -a localhost:8001 "$@"
+              ''
+            );
+            meta.description = "Serve the timvim handbook locally (run from the repo)";
+          };
+
+          apps.handbook-build = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-handbook-build" ''
+                export PATH=${docsPath}:$PATH
+                exec mkdocs build --strict "$@"
+              ''
+            );
+            meta.description = "Build the handbook site into ./site (run from the repo)";
+          };
+
+          # Regenerate the keymap reference + keyboard SVGs from timvim's LIVE
+          # keymaps (built Neovim queried headless) so the docs never drift from
+          # config. Writes into ./docs — run from the repo root.
+          apps.handbook-keymaps = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-handbook-keymaps" ''
+                set -euo pipefail
+                export PATH=${
+                  pkgs.lib.makeBinPath [
+                    pkgs.python3
+                    pkgs.coreutils
+                  ]
+                }:$PATH
+                json="$(mktemp -t timvim-keymaps.XXXXXX.json)"
+                trap 'rm -f "$json"' EXIT
+                echo "→ Dumping live keymaps from the built Neovim…"
+                KEYMAP_JSON="$json" ${wrappedNeovim}/bin/nvim --headless \
+                  -c 'luafile ${./lib/dump-keymaps.lua}' +qa || true
+                test -s "$json" || { echo "✗ keymap dump is empty"; exit 1; }
+                echo "→ Generating keymap docs + keyboard SVGs…"
+                python3 ${./lib/gen-keymap-docs.py} "$json" .
+              ''
+            );
+            meta.description = "Regenerate keymap docs + keyboard diagrams from the live config";
+          };
+
+          apps.handbook-pdf = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-handbook-pdf" ''
+                export PATH=${
+                  pkgs.lib.makeBinPath [
+                    pkgs.pandoc
+                    pdfLatex
+                    pkgs.librsvg
+                    pkgs.coreutils
+                    pkgs.gnused
+                    pkgs.gawk
+                    pkgs.bash
+                  ]
+                }:$PATH
+                export TIMVIM_DOCS_DIR=${./docs}
+                export TIMVIM_PDF_DIR=${./docs/pdf}
+                exec ${pkgs.lib.getExe pkgs.bash} ${./lib/docs-pdf.sh} "$@"
+              ''
+            );
+            meta.description = "Assemble the handbook into a Kartoza-branded PDF";
           };
 
           checks = {
@@ -207,7 +335,7 @@
                 # Additional formatters
                 stylua # Lua formatter
                 shfmt # Shell formatter
-                nodePackages.prettier # Markdown, JS, HTML formatter
+                prettier # Markdown, JS, HTML formatter
                 google-java-format # Java formatter
                 harper # Grammar checker LSP
                 # RST/Sphinx development tools
@@ -254,7 +382,7 @@
               # Additional formatters
               pkgs.stylua # Lua formatter
               pkgs.shfmt # Shell formatter
-              pkgs.nodePackages.prettier # Markdown, JS, HTML formatter
+              pkgs.prettier # Markdown, JS, HTML formatter
               pkgs.google-java-format # Java formatter
               pkgs.harper # Grammar checker LSP
 
