@@ -5,6 +5,12 @@ A beautiful, fully-featured Neovim configuration built with
 power of declarative configuration with modern development tools, AI
 integration, and comprehensive language support.
 
+> timvim began as a fork of the excellent
+> [**Schrovimger**](https://github.com/jack-thesparrow/schrovimger) project by
+> [**Rahul Tudu (jack-thesparrow)**](https://github.com/jack-thesparrow), which
+> provides the vast majority of the original source. See
+> [Acknowledgements](#-acknowledgements).
+
 ## ✨ Features
 
 - **🎨 Modern UI**: Beautiful themes with statusline, notifications, and
@@ -374,7 +380,7 @@ The Kartoza logo on the alpha dashboard is generated using `catimg` and
 
 2. **Generate the header Lua code**:
 
-   ![kartoza-logo.png](kartoza-logo.png)
+   ![kartoza-logo.png](https://raw.githubusercontent.com/timlinux/timvim/main/kartoza-logo.png)
 
    ```bash
    catimg -H 30 kartoza-logo.png | term2alpha > /tmp/header.lua
@@ -411,9 +417,26 @@ The Kartoza logo on the alpha dashboard is generated using `catimg` and
 - **Web**: HTML, CSS, JavaScript, Markdown (prettier)
 - **Java**: Formatting (google-java-format)
 
+## 🙏 Acknowledgements
+
+timvim stands on the shoulders of others' work. Our sincere thanks to:
+
+- [**Schrovimger** · Rahul Tudu (jack-thesparrow)](https://github.com/jack-thesparrow/schrovimger)
+  — the base project this repository was forked from; it provides the vast
+  majority of the original source.
+- [**NVF (Neovim Flake)** · NotAShelf](https://github.com/notashelf/nvf) — the
+  excellent declarative framework timvim is built on.
+- [**Sly-Harvey**](https://github.com/Sly-Harvey) — for a clean, readable nixvim
+  config used as reference.
+- [**elythh/nixvim**](https://github.com/elythh/nixvim) — for feature ideas.
+- [**zethra**](https://git.sr.ht/~zethra/) — for the `term2alpha` tool used to
+  render the alpha dashboard.
+- [**Nix**](https://nixos.org/) — the reproducible build foundation.
+
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE) for details. The original copyright is held
+by jack-thesparrow (Rahul Tudu).
 
 ## 🤝 Contributing
 
@@ -427,7 +450,7 @@ Made with 💗 by [Kartoza](https://kartoza.com) |
 [Donate!](https://github.com/sponsors/timlinux) |
 [GitHub](https://github.com/timlinux/timvim)
 
-Built using [NVF](https://github.com/notashelf/nvf) and
-[Nix](https://nixos.org/)
+Forked from [Schrovimger](https://github.com/jack-thesparrow/schrovimger),
+built using [NVF](https://github.com/notashelf/nvf) and [Nix](https://nixos.org/)
 
 </div>

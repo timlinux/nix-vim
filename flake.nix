@@ -256,6 +256,24 @@
             meta.description = "Regenerate keymap docs + keyboard diagrams from the live config";
           };
 
+          apps.handbook-addons = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-handbook-addons" ''
+                set -euo pipefail
+                export PATH=${
+                  pkgs.lib.makeBinPath [
+                    pkgs.python3
+                    pkgs.coreutils
+                  ]
+                }:$PATH
+                echo "→ Generating add-ons overview + diagram from lib/addons.json…"
+                python3 ${./lib/gen-addons-docs.py} .
+              ''
+            );
+            meta.description = "Regenerate the Overview add-ons table + diagram (drift-checked against config/)";
+          };
+
           apps.handbook-pdf = {
             type = "app";
             program = toString (

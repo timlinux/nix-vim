@@ -5,16 +5,23 @@ also serves the documentation locally, builds it into a static site, and
 renders it to a Kartoza-branded PDF — all through `nix run .#…` apps that
 carry their own toolchain, so you never need a nested `nix develop`.
 
-## The three apps
+## The apps
 
 | Command | What it does |
 | ------- | ------------ |
 | `nix run .#handbook` | Serves the site locally with live reload at `http://localhost:8001`. |
 | `nix run .#handbook-build` | Builds the static site into `./site` with `--strict`. |
 | `nix run .#handbook-pdf -- out.pdf` | Renders the whole handbook to a Kartoza-branded PDF. |
+| `nix run .#handbook-keymaps` | Regenerates the keymap tables + keyboard SVGs from the **live** keymaps. |
+| `nix run .#handbook-addons` | Regenerates the Overview add-ons table + diagram from `lib/addons.json`. |
 
 Run them from the repository root — they operate on `mkdocs.yml` and `docs/`
 in the current directory.
+
+The last two are **generators**: they write Markdown and SVGs into `docs/` that
+are checked into the repo. CI runs both before building the site and PDF, so the
+published docs are always regenerated from source. See
+[Generated pages](#generated-pages) below.
 
 ### Serve locally
 
@@ -58,6 +65,28 @@ on `PATH`, exports the docs and PDF-template directories, and executes
 explicit extras (including the Kartoza brand font **Lato** and the
 **Inconsolata** code font) to keep the closure lean rather than pulling in
 `scheme-full`.
+
+## Generated pages
+
+Two parts of the handbook are **generated from source**, never hand-edited, so
+they can never drift from the actual configuration:
+
+| Generator | Source of truth | Writes |
+| --------- | --------------- | ------ |
+| `nix run .#handbook-keymaps` | timvim's **live keymaps** (the built Neovim, queried headless) | `docs/reference/keymap.md`, `docs/reference/which-key.md`, `docs/reference/completion.md` and the keyboard/leader/completion SVGs under `docs/assets/diagrams/` |
+| `nix run .#handbook-addons` | `lib/addons.json` | `docs/overview/addons.md` and `docs/assets/diagrams/addons.svg` |
+
+The add-ons generator (`lib/gen-addons-docs.py`) also **drift-checks** the
+manifest against the live config tree: every `.nix` file under
+`config/{plugins,ui,utility,assistant}` (bar `default.nix`) must be referenced
+by some add-on's `configs` list, and every referenced file must exist. Add or
+remove a plugin without updating `lib/addons.json` and the generator exits
+non-zero — so the [Overview](../overview/index.md) is guaranteed to match what
+actually ships.
+
+To document a new add-on: add an entry to `lib/addons.json` (name, category,
+one-line purpose, upstream `url` and the `configs` it is wired from), then run
+`nix run .#handbook-addons`. Categories are defined at the top of the same file.
 
 ## Where the Kartoza theming lives
 

@@ -11,6 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Handbook Overview section** — a new end-user "Overview" chapter (between
+  Getting Started and the User Guide) that maps every add-on in the distribution
+  by purpose, with a brand-coloured SVG diagram and a fully linked table.
+- **Config-driven add-ons docs** — `lib/addons.json` is the single source of
+  truth; `nix run .#handbook-addons` (`lib/gen-addons-docs.py`) renders
+  `docs/overview/addons.md` and `docs/assets/diagrams/addons.svg`, and
+  **drift-checks** the manifest against the live `config/` tree so the docs can
+  never fall out of step with the architecture. Wired into the docs + release CI.
+
+### Changed
+
+- **Upstream attribution** — credited the [Schrovimger] project by Rahul Tudu
+  (jack-thesparrow), which timvim was forked from, and the [NVF] framework, in
+  the README (root and `.github/`) and the handbook. The root `README.md` is now
+  the single canonical README, mirrored into `.github/README.md`.
+
+### Fixed
+
+- **PDF handbook rendering** — the `handbook-pdf` transform now flattens Material
+  "grid cards" to a bold lead-in plus body paragraph (previously each card left a
+  stray horizontal rule), and transliterates the ✅/⚪ status glyphs, so the whole
+  handbook — not just the new Overview — renders cleanly to PDF.
+
+[Schrovimger]: https://github.com/jack-thesparrow/schrovimger
+[NVF]: https://github.com/notashelf/nvf
+
 ## [0.3.0] - 2026-07-19
 
 ### Added

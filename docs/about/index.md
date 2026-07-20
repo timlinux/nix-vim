@@ -12,6 +12,13 @@ framework, which lets an entire Neovim setup be expressed as Nix modules. There
 are no hand-written Lua config files to maintain and no plugin manager to keep in
 sync — the flake describes the whole editor, and Nix builds it.
 
+timvim began as a fork of the
+[Schrovimger](https://github.com/jack-thesparrow/schrovimger) project by
+[Rahul Tudu (jack-thesparrow)](https://github.com/jack-thesparrow), which
+provides the bulk of the original source. timvim adds the Kartoza brand,
+tooling and documentation on top. Our thanks to Rahul, and to
+[NotAShelf](https://github.com/notashelf/nvf) for the NVF framework.
+
 ## Philosophy
 
 timvim is guided by three principles that pull in the same direction.

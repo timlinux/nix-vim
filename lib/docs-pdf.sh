@@ -39,6 +39,8 @@ PAGES=(
   "getting-started/home-manager.md"
   "getting-started/first-launch.md"
   "getting-started/dashboard.md"
+  "overview/index.md"
+  "overview/addons.md"
   "user-guide/index.md"
   "user-guide/editing.md"
   "user-guide/completion-ai.md"
@@ -86,6 +88,23 @@ transform() {
     /^```mermaid/ { inmermaid = 1; print "*(Diagram - see the online handbook.)*"; next }
     inmermaid && /^```/ { inmermaid = 0; next }
     inmermaid { next }
+    # Material "grid cards" degrade badly in the linear PDF (each card becomes a
+    # bullet + a stray horizontal rule). Flatten a grid block to a bold lead-in
+    # per card followed by its body paragraph, dropping the card divider.
+    /^<div class="grid cards"/ { ingrid = 1; next }
+    ingrid && /^<\/div>/ { ingrid = 0; next }
+    ingrid && /^[ \t]*-[ \t]+/ {
+      if (match($0, /\*\*[^*]+\*\*/)) {
+        printf "\n%s\n\n", substr($0, RSTART, RLENGTH)
+      } else {
+        line = $0; sub(/^[ \t]*-[ \t]+/, "", line); printf "\n%s\n\n", line
+      }
+      next
+    }
+    ingrid && /^[ \t]+-{3,}[ \t]*$/ { next }
+    ingrid && /^    / { print substr($0, 5); next }
+    ingrid && /^$/ { print ""; next }
+    ingrid { print; next }
     /^!!! [a-z]+ ".*"$/ {
       match($0, /^!!! [a-z]+ "(.*)"$/, m)
       split($0, w, " ")
@@ -115,6 +134,7 @@ transform() {
       -e 's/💗/love/g' \
       -e 's/🚀 \?//g' -e 's/⌨ \?//g' -e 's/🔒 \?//g' -e 's/📐 \?//g' \
       -e 's/🔧 \?//g' -e 's/🧭 \?//g' -e 's/️ \?//g' \
+      -e 's/✅ \?//g' -e 's/⚪ \?//g' \
       -e 's/⚠/WARNING /g' \
       -e 's/✓/OK/g' -e 's/✗/X/g' \
       -e 's/≥/>=/g' -e 's/≤/<=/g' -e 's/≈/~/g' \

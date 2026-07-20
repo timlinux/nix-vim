@@ -155,6 +155,9 @@ nav:
     - Home Manager: getting-started/home-manager.md
     - First Launch: getting-started/first-launch.md
     - The Dashboard: getting-started/dashboard.md
+  - Overview:
+    - overview/index.md
+    - Add-ons & Components: overview/addons.md
   - User Guide:
     - user-guide/index.md
     - Editing & Motion: user-guide/editing.md

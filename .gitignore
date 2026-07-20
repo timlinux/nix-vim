@@ -56,6 +56,8 @@ CLAUDE.md
 PROMPT.log
 claude.sh
 claude-out.txt
+claude.out
+.claude-issue
 
 # ========== Local screenshots (never committed) ==========
 screenshots-gitignore/
