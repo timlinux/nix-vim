@@ -1,0 +1,94 @@
+{
+  "_comment": [
+    "SPDX-FileCopyrightText: 2026 Kartoza (Pty) Ltd <tim@kartoza.com>",
+    "SPDX-License-Identifier: MIT",
+    "",
+    "Source of truth for the handbook's Overview section (add-ons diagram + table).",
+    "Rendered by lib/gen-addons-docs.py into docs/overview/addons.md and",
+    "docs/assets/diagrams/addons.svg. The generator ALSO drift-checks this file",
+    "against the live config tree: every .nix file under config/{plugins,ui,",
+    "utility,assistant} (except default.nix) must be referenced by some entry's",
+    "'configs' list, or the build fails. Add a plugin -> add it here, or CI breaks.",
+    "",
+    "Each add-on: name, category (must exist in 'categories'), purpose (one line),",
+    "url (upstream project), enabled (false = shipped but off by default),",
+    "configs (the config/*.nix file(s) that wire it)."
+  ],
+  "categories": [
+    { "key": "ai",        "name": "AI Assistance",      "color": "ORANGE", "blurb": "Chat and inline completion, under your control" },
+    { "key": "lang",      "name": "Language & LSP",     "color": "TEAL",   "blurb": "Diagnostics, formatting, completion and syntax" },
+    { "key": "nav",       "name": "Navigation & Search","color": "BLUE",   "blurb": "Jump to files, symbols and text fast" },
+    { "key": "git",       "name": "Git & GitHub",       "color": "RED",    "blurb": "Hunks, diffs, blame and pull requests" },
+    { "key": "edit",      "name": "Editing & Motion",   "color": "BLUE",   "blurb": "Surround, yank, multi-cursor and refactor" },
+    { "key": "debug",     "name": "Debug & Test",       "color": "ORANGE", "blurb": "Breakpoints, stepping and test runners" },
+    { "key": "ui",        "name": "UI & Appearance",    "color": "GREY",   "blurb": "Dashboard, statusline, folds and visuals" },
+    { "key": "files",     "name": "Files & Terminal",   "color": "TEAL",   "blurb": "File manager, terminals and undo history" },
+    { "key": "docs",      "name": "Writing & Docs",     "color": "GREY",   "blurb": "Markdown, grammar and note-taking" },
+    { "key": "workflow",  "name": "Workflow & Extras",  "color": "BLUE",   "blurb": "Sessions, projects and practice tools" }
+  ],
+  "addons": [
+    { "name": "Claude Code",            "category": "ai",   "purpose": "AI chat and agentic coding inside a terminal split.",           "url": "https://github.com/coder/claudecode.nvim",              "configs": ["config/assistant/claude-code.nix"] },
+    { "name": "GitHub Copilot",         "category": "ai",   "purpose": "Inline ghost-text completion you accept as you type.",          "url": "https://github.com/zbirenbaum/copilot.lua",             "configs": ["config/assistant/copilot.nix"] },
+
+    { "name": "nvim-lspconfig + lspsaga","category": "lang","purpose": "Language servers with a polished diagnostics UI.",             "url": "https://github.com/neovim/nvim-lspconfig",              "configs": ["config/plugins/lsp.nix"] },
+    { "name": "Language modules",       "category": "lang", "purpose": "Per-language LSP, formatting, DAP and treesitter, via NVF.",    "url": "https://github.com/notashelf/nvf",                      "configs": ["config/plugins/languages.nix", "config/plugins/python.nix"] },
+    { "name": "nvim-treesitter",        "category": "lang", "purpose": "Fast, accurate syntax highlighting and code objects.",         "url": "https://github.com/nvim-treesitter/nvim-treesitter",    "configs": ["config/plugins/treesitter.nix"] },
+    { "name": "conform.nvim",           "category": "lang", "purpose": "Format-on-command with per-filetype formatters.",              "url": "https://github.com/stevearc/conform.nvim",              "configs": ["config/plugins/conform.nix"] },
+    { "name": "LuaSnip",                "category": "lang", "purpose": "Snippet engine feeding the completion menu.",                  "url": "https://github.com/L3MON4D3/LuaSnip",                   "configs": ["config/plugins/luasnip.nix"] },
+    { "name": "Trouble",                "category": "lang", "purpose": "A pretty, navigable list of diagnostics and references.",      "url": "https://github.com/folke/trouble.nvim",                 "configs": ["config/plugins/trouble.nix"] },
+    { "name": "harper-ls",              "category": "lang", "purpose": "Grammar and spelling language server for prose.",              "url": "https://github.com/elijah-potter/harper",               "configs": ["config/plugins/harper.nix"] },
+    { "name": "esbonio (RST/Sphinx)",   "category": "lang", "purpose": "reStructuredText and Sphinx language server.",                 "url": "https://github.com/swyddfa/esbonio",                    "configs": ["config/plugins/rst.nix"] },
+
+    { "name": "Telescope",              "category": "nav",  "purpose": "Fuzzy finder for files, grep, symbols and media.",             "url": "https://github.com/nvim-telescope/telescope.nvim",      "configs": ["config/plugins/telescope.nix"] },
+    { "name": "fzf-lua",                "category": "nav",  "purpose": "Blazing-fast fzf-powered pickers.",                            "url": "https://github.com/ibhagwan/fzf-lua",                   "configs": ["config/plugins/fzf.nix"] },
+    { "name": "flash.nvim",             "category": "nav",  "purpose": "Label-based jump-to-anywhere motions.",                        "url": "https://github.com/folke/flash.nvim",                   "configs": ["config/utility/flash-nvim.nix"] },
+    { "name": "goto-preview",           "category": "nav",  "purpose": "Peek definitions and references in a floating window.",        "url": "https://github.com/rmagatti/goto-preview",              "configs": ["config/plugins/goto-preview.nix"] },
+    { "name": "outline.nvim",           "category": "nav",  "purpose": "A symbol outline sidebar for the current file.",               "url": "https://github.com/hedyhli/outline.nvim",               "configs": ["config/utility/outline.nix"] },
+    { "name": "smart-splits.nvim",      "category": "nav",  "purpose": "Seamless split navigation and resizing.",                      "url": "https://github.com/mrjones2014/smart-splits.nvim",      "configs": ["config/utility/smart-splits.nix"] },
+
+    { "name": "gitsigns.nvim",          "category": "git",  "purpose": "Inline hunk signs, staging, blame and hunk motions.",          "url": "https://github.com/lewis6991/gitsigns.nvim",            "configs": ["config/plugins/git.nix"] },
+    { "name": "diffview.nvim",          "category": "git",  "purpose": "Side-by-side diffs and merge-conflict resolution.",            "url": "https://github.com/sindrets/diffview.nvim",             "configs": ["config/plugins/diffview.nix"] },
+    { "name": "octo.nvim",              "category": "git",  "purpose": "Review and manage GitHub issues and pull requests.",           "url": "https://github.com/pwntester/octo.nvim",                "configs": ["config/plugins/octo.nix"] },
+
+    { "name": "nvim-surround",          "category": "edit", "purpose": "Add, change and delete surrounding pairs.",                    "url": "https://github.com/kylechui/nvim-surround",             "configs": ["config/utility/surround.nix"] },
+    { "name": "yanky.nvim",             "category": "edit", "purpose": "A yank ring with history and put-with-formatting.",            "url": "https://github.com/gbprod/yanky.nvim",                  "configs": ["config/plugins/yanky.nix"] },
+    { "name": "multicursors.nvim",      "category": "edit", "purpose": "Multiple cursors for simultaneous edits.",                     "url": "https://github.com/smoka7/multicursors.nvim",           "configs": ["config/utility/mutlicursors.nix"] },
+    { "name": "refactoring.nvim",       "category": "edit", "purpose": "Extract, inline and other language-aware refactors.",          "url": "https://github.com/ThePrimeagen/refactoring.nvim",      "configs": ["config/utility/refactoring.nix"] },
+    { "name": "hardtime.nvim",          "category": "edit", "purpose": "Coaches better motions by nudging away from bad habits.",      "url": "https://github.com/m4xshen/hardtime.nvim",              "configs": ["config/plugins/hardtime.nix"] },
+    { "name": "mini.nvim",              "category": "edit", "purpose": "A suite of small editing utilities (pairs, colours).",         "url": "https://github.com/echasnovski/mini.nvim",              "configs": ["config/plugins/mini-nvim.nix"] },
+
+    { "name": "nvim-dap",               "category": "debug","purpose": "Debug Adapter Protocol client with a debug UI.",               "url": "https://github.com/mfussenegger/nvim-dap",              "configs": ["config/plugins/debugger.nix"] },
+    { "name": "persistent-breakpoints.nvim","category": "debug","purpose": "Keeps your breakpoints across sessions.",                  "url": "https://github.com/Weissle/persistent-breakpoints.nvim","configs": ["config/plugins/persistent-breakpoints.nix"] },
+    { "name": "neotest",                "category": "debug","purpose": "Run and review tests without leaving the editor.",             "url": "https://github.com/nvim-neotest/neotest",               "configs": ["config/plugins/neotest.nix"] },
+
+    { "name": "alpha-nvim",             "category": "ui",   "purpose": "The Kartoza-branded startup dashboard.",                       "url": "https://github.com/goolord/alpha-nvim",                 "configs": ["config/plugins/alpha.nix"] },
+    { "name": "lualine.nvim",           "category": "ui",   "purpose": "The powerline-bubble statusline.",                             "url": "https://github.com/nvim-lualine/lualine.nvim",          "configs": ["config/plugins/lualine.nix"] },
+    { "name": "noice.nvim",             "category": "ui",   "purpose": "Reimagined cmdline, messages and popupmenu UI.",               "url": "https://github.com/folke/noice.nvim",                   "configs": ["config/ui/noice.nix"] },
+    { "name": "nvim-notify",            "category": "ui",   "purpose": "Animated, dismissible notification toasts.",                   "url": "https://github.com/rcarriga/nvim-notify",               "configs": ["config/plugins/notify.nix"] },
+    { "name": "barbecue.nvim",          "category": "ui",   "purpose": "A VS Code-style breadcrumb winbar.",                           "url": "https://github.com/utilyre/barbecue.nvim",              "configs": ["config/ui/barbecue.nix"] },
+    { "name": "indent-blankline.nvim",  "category": "ui",   "purpose": "Indent guides (toggle with a keymap).",                        "url": "https://github.com/lukas-reineke/indent-blankline.nvim","configs": ["config/ui/ibl.nix"] },
+    { "name": "nvim-ufo",               "category": "ui",   "purpose": "Modern, LSP-aware code folding.",                              "url": "https://github.com/kevinhwang91/nvim-ufo",              "configs": ["config/ui/ufo.nix"] },
+    { "name": "nvim-colorizer.lua",     "category": "ui",   "purpose": "Highlights colour codes with their actual colour.",            "url": "https://github.com/norcalli/nvim-colorizer.lua",        "configs": ["config/plugins/colorizer.nix"] },
+    { "name": "precognition.nvim",      "category": "ui",   "purpose": "Shows the motions available from your cursor.",                "url": "https://github.com/tris203/precognition.nvim",          "configs": ["config/utility/precognition.nix"] },
+    { "name": "smear-cursor.nvim",      "category": "ui",   "purpose": "A smooth animated cursor trail.",                              "url": "https://github.com/sphamba/smear-cursor.nvim",          "configs": ["config/utility/smear-cursor.nix"] },
+    { "name": "snacks.nvim",            "category": "ui",   "purpose": "A collection of quality-of-life UI helpers.",                  "url": "https://github.com/folke/snacks.nvim",                  "configs": ["config/utility/snacks-nvim.nix"] },
+    { "name": "bufferline (nvim)",      "category": "ui",   "purpose": "A bubbled tabline of open buffers.",                           "url": "https://github.com/akinsho/bufferline.nvim",            "enabled": false, "configs": ["config/ui/tabline.nix"] },
+    { "name": "codewindow.nvim",        "category": "ui",   "purpose": "A code minimap in the gutter.",                                "url": "https://github.com/gorbit99/codewindow.nvim",           "enabled": false, "configs": ["config/plugins/minimap.nix"] },
+
+    { "name": "yazi.nvim",              "category": "files","purpose": "The primary file manager (Yazi TUI in a float).",              "url": "https://github.com/mikavilpas/yazi.nvim",               "configs": ["config/plugins/yazi.nix"] },
+    { "name": "toggleterm.nvim",        "category": "files","purpose": "Managed floating and split terminals.",                        "url": "https://github.com/akinsho/toggleterm.nvim",            "configs": ["config/plugins/terminal.nix"] },
+    { "name": "vim-floaterm",           "category": "files","purpose": "Extra floating-terminal windows.",                             "url": "https://github.com/voldikss/vim-floaterm",              "configs": ["config/plugins/floaterm.nix"] },
+    { "name": "undotree",               "category": "files","purpose": "Visualise and traverse the undo history.",                     "url": "https://github.com/mbbill/undotree",                    "configs": ["config/plugins/undoTree.nix"] },
+    { "name": "image.nvim",             "category": "files","purpose": "Render images inline via the Kitty graphics protocol.",       "url": "https://github.com/3rd/image.nvim",                     "configs": ["config/plugins/image.nix", "config/utility/image-nvim.nix"] },
+    { "name": "neo-tree.nvim",          "category": "files","purpose": "A tree file explorer (off; Yazi is the default).",            "url": "https://github.com/nvim-neo-tree/neo-tree.nvim",        "enabled": false, "configs": ["config/plugins/filetree.nix"] },
+
+    { "name": "Markdown tools",         "category": "docs", "purpose": "Live browser preview and Markdown filetype tweaks.",           "url": "https://github.com/iamcco/markdown-preview.nvim",       "configs": ["config/plugins/markdown.nix", "config/utility/preview.nix"] },
+    { "name": "obsidian.nvim",          "category": "docs", "purpose": "Obsidian vault note-taking (off by default).",                "url": "https://github.com/epwalsh/obsidian.nvim",              "enabled": false, "configs": ["config/plugins/notes.nix"] },
+
+    { "name": "nvim-session-manager",   "category": "workflow","purpose": "Save and restore editing sessions per project.",           "url": "https://github.com/Shatur/neovim-session-manager",      "configs": ["config/core/session.nix"] },
+    { "name": "project.nvim",           "category": "workflow","purpose": "Automatic project-root detection and switching.",           "url": "https://github.com/ahmedkhalf/project.nvim",            "configs": ["config/plugins/projects.nix"] },
+    { "name": "leetcode.nvim",          "category": "workflow","purpose": "Solve LeetCode problems inside Neovim.",                    "url": "https://github.com/kawre/leetcode.nvim",                "configs": ["config/utility/leetcode-nvim.nix"] },
+    { "name": "typr (nvzone)",          "category": "workflow","purpose": "A built-in typing-speed practice game.",                    "url": "https://github.com/nvzone/typr",                        "configs": ["config/plugins/nvzone-typr.nix"] },
+    { "name": "direnv.vim",             "category": "workflow","purpose": "Loads per-project environments via direnv.",                "url": "https://github.com/direnv/direnv.vim",                  "configs": ["config/ui/direnv.nix"] }
+  ]
+}

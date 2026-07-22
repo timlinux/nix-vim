@@ -49,6 +49,9 @@ jobs:
       - name: Regenerate keymap docs from live config
         run: nix run .#handbook-keymaps
 
+      - name: Regenerate add-ons overview from config
+        run: nix run .#handbook-addons
+
       - name: Build handbook PDF
         run: nix run .#handbook-pdf -- "${{ steps.ver.outputs.pdf }}"
 
