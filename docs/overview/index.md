@@ -44,7 +44,7 @@ upstream project — see **[Add-ons & Components](addons.md)**.
 
     ---
 
-    Telescope, fzf-lua, flash motions and the Yazi file manager. See
+    Telescope, flash motions and the Yazi file manager. See
     [Navigation & Search](../user-guide/navigation.md).
 
 -   :material-source-branch:{ .lg .middle } **Git & GitHub**

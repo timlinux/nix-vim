@@ -69,11 +69,11 @@ through NVF into a wrapped Neovim exposed as packages.default / apps.default](..
 
 | Sub-tree      | Responsibility |
 | ------------- | -------------- |
-| `core/`       | Editor fundamentals: `options.nix`, `keymaps.nix`, `whichKey.nix`, `clipboard.nix`, `formatting.nix`, `autocmp.nix`, `session.nix`, `autosave.nix`, `autopairs.nix`, `luaLoader.nix`. |
+| `core/`       | Editor fundamentals: `options.nix`, `keymaps.nix`, `whichKey.nix`, `clipboard.nix`, `formatting.nix`, `autocmp.nix`, `session.nix`, `autosave.nix`, `luaLoader.nix`. |
 | `plugins/`    | The bulk of functionality: LSP, treesitter, telescope, fzf, git, the debugger, per-language support, the alpha dashboard, Trouble, and more. |
 | `themes/`     | Colour scheme selection and the Kartoza brand theme (`theme.nix`, `kartoza-theme.nix`). |
 | `ui/`         | Visual chrome: statusline (`lualine`), `noice`, `tabline`, `barbecue`, fold UI (`ufo`), `direnv` integration. |
-| `utility/`    | Editing helpers: flash navigation, surround, refactoring, multi-cursors, smart splits, outline, snacks, preview. |
+| `utility/`    | Editing helpers: flash navigation, surround, refactoring, multi-cursors, smart splits, outline, preview. |
 | `assistant/`  | AI tooling: Claude Code integration (`claude-code.nix`) and GitHub Copilot (`copilot.nix`). |
 
 !!! note "Choosing the right sub-tree"

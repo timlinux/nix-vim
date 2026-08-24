@@ -87,11 +87,8 @@ in
       };
 
     };
-    languages = {
-      enableFormat = true;
-      enableTreesitter = true;
-      enableExtraDiagnostics = true;
-    }
-    // treeSitterEnables;
+    # The enableFormat / enableTreesitter / enableExtraDiagnostics flags live in
+    # languages.nix; this module only turns on the per-language grammars.
+    languages = treeSitterEnables;
   };
 }

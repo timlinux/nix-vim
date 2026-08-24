@@ -5,7 +5,7 @@
     `lib/gen-addons-docs.py`, and drift-checked against the live
     `config/` tree. Do not edit by hand — run `nix run .#handbook-addons`.
 
-timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but off by default — on top of the [NVF](https://github.com/notashelf/nvf) framework. The [Overview](index.md) shows them as a visual map; the full list is grouped into 10 families below.
+timvim bundles **47 add-ons** — 46 enabled out of the box and 1 shipped but off by default — on top of the [NVF](https://github.com/notashelf/nvf) framework. The [Overview](index.md) shows them as a visual map; the full list is grouped into 10 families below.
 
 ## AI Assistance
 
@@ -38,7 +38,6 @@ timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but of
 | Add-on | Purpose | Default |
 |--------|---------|---------|
 | [Telescope](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder for files, grep, symbols and media. | ✅ On |
-| [fzf-lua](https://github.com/ibhagwan/fzf-lua) | Blazing-fast fzf-powered pickers. | ✅ On |
 | [flash.nvim](https://github.com/folke/flash.nvim) | Label-based jump-to-anywhere motions. | ✅ On |
 | [goto-preview](https://github.com/rmagatti/goto-preview) | Peek definitions and references in a floating window. | ✅ On |
 | [outline.nvim](https://github.com/hedyhli/outline.nvim) | A symbol outline sidebar for the current file. | ✅ On |
@@ -89,11 +88,9 @@ timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but of
 | [nvim-notify](https://github.com/rcarriga/nvim-notify) | Animated, dismissible notification toasts. | ✅ On |
 | [barbecue.nvim](https://github.com/utilyre/barbecue.nvim) | A VS Code-style breadcrumb winbar. | ✅ On |
 | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guides (toggle with a keymap). | ✅ On |
-| [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) | Modern, LSP-aware code folding. | ✅ On |
 | [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) | Highlights colour codes with their actual colour. | ✅ On |
 | [precognition.nvim](https://github.com/tris203/precognition.nvim) | Shows the motions available from your cursor. | ✅ On |
 | [smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) | A smooth animated cursor trail. | ✅ On |
-| [snacks.nvim](https://github.com/folke/snacks.nvim) | A collection of quality-of-life UI helpers. | ✅ On |
 | [bufferline (nvim)](https://github.com/akinsho/bufferline.nvim) | A bubbled tabline of open buffers. | ⚪ Off |
 
 ## Files & Terminal
@@ -104,10 +101,8 @@ timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but of
 |--------|---------|---------|
 | [yazi.nvim](https://github.com/mikavilpas/yazi.nvim) | The primary file manager (Yazi TUI in a float). | ✅ On |
 | [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Managed floating and split terminals. | ✅ On |
-| [vim-floaterm](https://github.com/voldikss/vim-floaterm) | Extra floating-terminal windows. | ✅ On |
 | [undotree](https://github.com/mbbill/undotree) | Visualise and traverse the undo history. | ✅ On |
 | [image.nvim](https://github.com/3rd/image.nvim) | Render images inline via the Kitty graphics protocol. | ✅ On |
-| [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) | A tree file explorer (off; Yazi is the default). | ⚪ Off |
 
 ## Writing & Docs
 
@@ -116,7 +111,6 @@ timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but of
 | Add-on | Purpose | Default |
 |--------|---------|---------|
 | [Markdown tools](https://github.com/iamcco/markdown-preview.nvim) | Live browser preview and Markdown filetype tweaks. | ✅ On |
-| [obsidian.nvim](https://github.com/epwalsh/obsidian.nvim) | Obsidian vault note-taking (off by default). | ⚪ Off |
 
 ## Workflow & Extras
 
