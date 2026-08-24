@@ -153,9 +153,11 @@
 <rect x="450" y="278" width="62" height="55" rx="7" fill="#FFFFFF" stroke="#D1D1D1"/>
 <text x="457" y="294" fill="#383939" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">B</text>
 <text x="481" y="308" fill="#676869" font-size="8" text-anchor="middle">WORD back</text>
-<rect x="519" y="278" width="62" height="55" rx="7" fill="#FFFFFF" stroke="#D1D1D1"/>
-<text x="526" y="294" fill="#383939" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">N</text>
-<text x="550" y="308" fill="#676869" font-size="8" text-anchor="middle">Prev match</text>
+<rect x="519" y="278" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
+<text x="526" y="294" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">N</text>
+<text x="550" y="308" fill="#FFFFFF" font-size="8" text-anchor="middle">Previous</text>
+<text x="550" y="318" fill="#FFFFFF" font-size="8" text-anchor="middle">Search</text>
+<text x="550" y="328" fill="#FFFFFF" font-size="8" text-anchor="middle">Match</text>
 <rect x="588" y="278" width="62" height="55" rx="7" fill="#FFFFFF" stroke="#D1D1D1"/>
 <text x="595" y="294" fill="#383939" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">M</text>
 <text x="619" y="308" fill="#676869" font-size="8" text-anchor="middle">Mid screen</text>

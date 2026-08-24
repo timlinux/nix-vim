@@ -5,7 +5,7 @@
     (the built Neovim is queried headless). It is always in step with the
     configuration — do not edit it by hand.
 
-timvim sets **556** keymaps. The leader is ++space++. Tables below group them the way which-key does.
+timvim sets **373** keymaps. The leader is ++space++. Tables below group them the way which-key does.
 
 ## Leader groups
 
@@ -92,8 +92,8 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<leader>fn` | n | Find Nix Files |
 | `<leader>fo` | n | Open Yazi at Current File |
 | `<leader>fp` | n | Find Python Files |
-| `<leader>fr` | n | Resume (previous search) |
-| `<leader>fs` | n | Treesitter |
+| `<leader>fr` | n | Find Recent Files |
+| `<leader>fs` | n | Search Word Under Cursor |
 | `<leader>ft` | n | Open |
 | `<leader>fvb` | n | Git branches |
 | `<leader>fvcb` | n | Git buffer commits |
@@ -233,6 +233,7 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<leader>tg` | n | Toggle Harper Grammar Checker |
 | `<leader>th` | n | Toggle HardTime |
 | `<leader>ti` | n | Toggle Indent Guides |
+| `<leader>tn` | n | Toggle Inlay Hints |
 | `<leader>to` | n | Toggle Code Outline Panel |
 | `<leader>tp` | n | Toggle Precognition |
 | `<leader>tt` | n | Toggle Floating Terminal |
@@ -271,7 +272,6 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<leader>zf` | n | Quick Fix with First Suggestion |
 | `<leader>zr` | n | Remove Word from Dictionary |
 | `<leader>zs` | n | Toggle Global Spell Check |
-| `<leader>zt` | n | Toggle Syntax-based Spell Check |
 
 ## Direct keys (normal / visual)
 
@@ -283,19 +283,14 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `-` | n | Open Yazi File Manager |
 | `<C-W>d` | n | Show diagnostics under the cursor |
 | `<CR>` | n | Accept suggestion |
+| `<Esc>` | n | Clear Search Highlight |
 | `<MiddleMouse>` | n | Paste from primary selection |
-| `<Plug>(git-conflict-base)` | n, v | Git Conflict: Choose Base |
-| `<Plug>(git-conflict-both)` | n, v | Git Conflict: Choose Both |
-| `<Plug>(git-conflict-next-conflict)` | n | Git Conflict: Next Conflict |
-| `<Plug>(git-conflict-none)` | n, v | Git Conflict: Choose None |
-| `<Plug>(git-conflict-ours)` | n, v | Git Conflict: Choose Ours |
-| `<Plug>(git-conflict-prev-conflict)` | n | Git Conflict: Previous Conflict |
-| `<Plug>(git-conflict-theirs)` | n, v | Git Conflict: Choose Theirs |
 | `<Tab>` | v | vim.snippet.jump if active, otherwise <Tab> |
 | `@` | v | :help v_@-default |
 | `H` | n, v | Go to start of line |
 | `K` | n | Hover Documentation |
 | `L` | n, v | Go to end of line |
+| `N` | n | Previous Search Match (centred) |
 | `Q` | v | :help v_Q-default |
 | `R` | v, o | Treesitter Search |
 | `S` | n, v, o | Flash Treesitter |
@@ -313,9 +308,9 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `[T` | n | :trewind |
 | `[[` | n | Previous panel suggestion |
 | `[a` | n | :previous |
-| `[b` | n | :bprevious |
+| `[b` | n | Previous Buffer |
 | `[c` | n | Previous hunk |
-| `[d` | n | Jump to the previous diagnostic in the current buffer |
+| `[d` | n | Previous Diagnostic |
 | `[l` | n | :lprevious |
 | `[n` | v | Select previous node |
 | `[q` | n | :cprevious |
@@ -335,9 +330,9 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `]T` | n | :tlast |
 | `]]` | n | Next panel suggestion |
 | `]a` | n | :next |
-| `]b` | n | :bnext |
+| `]b` | n | Next Buffer |
 | `]c` | n | Next hunk |
-| `]d` | n | Jump to the next diagnostic in the current buffer |
+| `]d` | n | Next Diagnostic |
 | `]l` | n | :lnext |
 | `]n` | v | Select next node |
 | `]q` | n | :cnext |
@@ -362,6 +357,7 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `grx` | n | vim.lsp.codelens.run() |
 | `gx` | n, v | Opens filepath or URI under cursor with the system handler (file explorer, web browser, …) |
 | `in` | v, o | Select child (inner) node |
+| `n` | n | Next Search Match (centred) |
 | `r` | o | Remote Flash |
 | `s` | n, v, o | Flash |
 
@@ -370,10 +366,10 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | Key | Mode | Action |
 |-----|------|--------|
 | `<C-Bslash>` | n | Focus Previous Window/Pane |
-| `<C-H>` | n | Return from Definition |
+| `<C-H>` | n | Focus Window/Pane on the Left |
 | `<C-J>` | n | Focus Window/Pane Below |
 | `<C-K>` | n | Focus Window/Pane Above |
-| `<C-L>` | n | Go to Definition |
+| `<C-L>` | n | Focus Window/Pane on the Right |
 | `<C-S>` | v | vim.lsp.buf.signature_help() |
 | `<C-T>` | n | Toggle Terminal |
 | `<C-W><C-D>` | n | Show diagnostics under the cursor |

@@ -98,9 +98,9 @@
 <text x="450" y="246" fill="#676869" font-size="8" text-anchor="middle">File info</text>
 <rect x="488" y="216" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
 <text x="495" y="232" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">h</text>
-<text x="519" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Return</text>
-<text x="519" y="256" fill="#FFFFFF" font-size="8" text-anchor="middle">from</text>
-<text x="519" y="266" fill="#FFFFFF" font-size="8" text-anchor="middle">Definition</text>
+<text x="519" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Focus</text>
+<text x="519" y="256" fill="#FFFFFF" font-size="8" text-anchor="middle">Window/Pane</text>
+<text x="519" y="266" fill="#FFFFFF" font-size="8" text-anchor="middle">on the</text>
 <rect x="557" y="216" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
 <text x="564" y="232" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">j</text>
 <text x="588" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Focus</text>
@@ -113,8 +113,9 @@
 <text x="657" y="266" fill="#FFFFFF" font-size="8" text-anchor="middle">Above</text>
 <rect x="695" y="216" width="62" height="55" rx="7" fill="#569FC6" stroke="#569FC6"/>
 <text x="702" y="232" fill="#FFFFFF" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">l</text>
-<text x="726" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Go to</text>
-<text x="726" y="256" fill="#FFFFFF" font-size="8" text-anchor="middle">Definition</text>
+<text x="726" y="246" fill="#FFFFFF" font-size="8" text-anchor="middle">Focus</text>
+<text x="726" y="256" fill="#FFFFFF" font-size="8" text-anchor="middle">Window/Pane</text>
+<text x="726" y="266" fill="#FFFFFF" font-size="8" text-anchor="middle">on the</text>
 <rect x="764" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>
 <text x="771" y="232" fill="#B7B7B5" font-size="12" font-weight="800" font-family="JetBrains Mono,monospace">;</text>
 <rect x="833" y="216" width="62" height="55" rx="7" fill="#FAFAF8" stroke="#D1D1D1"/>

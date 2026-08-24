@@ -39,6 +39,30 @@
 
       wrap = false;
 
+      # Keep context around the cursor instead of letting it hit the edges
+      scrolloff = 8;
+      sidescrolloff = 8;
+
+      # Always reserve the sign column so the text does not shift sideways
+      # every time a diagnostic, gitsign or breakpoint appears
+      signcolumn = "yes";
+
+      # New splits open where the eye expects them
+      splitbelow = true;
+      splitright = true;
+
+      # Live preview of :substitute in a scratch split
+      inccommand = "split";
+
+      # Ask instead of failing on :q with unsaved changes
+      confirm = true;
+
+      # which-key/flash feel: how long a pending key sequence waits.
+      # This must be `tm`, not `timeoutlen`: nvf declares `tm` with a default of
+      # 500 and emits it after `timeoutlen` in the generated init.lua, so
+      # setting the long name alone is silently overwritten.
+      tm = 400;
+
       # Mouse settings for clipboard integration
       mouse = "a"; # Enable mouse in all modes
       mousemodel = "popup_setpos"; # Right-click shows popup menu

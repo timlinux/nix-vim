@@ -1,5 +1,77 @@
 {
   vim.keymaps = [
+    # --- Navigation comfort -------------------------------------------------
+    {
+      key = "<Esc>";
+      mode = "n";
+      silent = true;
+      action = "<cmd>nohlsearch<CR>";
+      desc = "󰸱 Clear Search Highlight";
+    }
+    {
+      key = "n";
+      mode = "n";
+      silent = true;
+      action = "nzzzv";
+      desc = "󰒕 Next Search Match (centred)";
+    }
+    {
+      key = "N";
+      mode = "n";
+      silent = true;
+      action = "Nzzzv";
+      desc = "󰒖 Previous Search Match (centred)";
+    }
+    {
+      key = "]b";
+      mode = "n";
+      silent = true;
+      action = "<cmd>bnext<CR>";
+      desc = "󰓩 Next Buffer";
+    }
+    {
+      key = "[b";
+      mode = "n";
+      silent = true;
+      action = "<cmd>bprevious<CR>";
+      desc = "󰓩 Previous Buffer";
+    }
+    {
+      key = "]d";
+      mode = "n";
+      silent = true;
+      action = "<cmd>lua vim.diagnostic.goto_next()<CR>";
+      desc = "󰒕 Next Diagnostic";
+    }
+    {
+      key = "[d";
+      mode = "n";
+      silent = true;
+      action = "<cmd>lua vim.diagnostic.goto_prev()<CR>";
+      desc = "󰒖 Previous Diagnostic";
+    }
+    {
+      key = "<leader>fr";
+      mode = "n";
+      silent = true;
+      action = "<cmd>Telescope oldfiles<CR>";
+      desc = "󰋚 Find Recent Files";
+    }
+    {
+      key = "<leader>fs";
+      mode = "n";
+      silent = true;
+      action = "<cmd>Telescope grep_string<CR>";
+      desc = "󰱼 Search Word Under Cursor";
+    }
+    {
+      key = "<leader>tn";
+      mode = "n";
+      silent = true;
+      action = "<cmd>lua _G.toggle_inlay_hints()<CR>";
+      desc = "󰋽 Toggle Inlay Hints";
+    }
+
     # Clipboard paste keybindings
     # Ctrl+Shift+V to paste from system clipboard in insert and command mode
     {
@@ -66,20 +138,8 @@
       desc = "󰁔 Go to end of line";
     }
 
-    {
-      key = "<C-l>";
-      mode = "n";
-      silent = true;
-      action = "<cmd>lua vim.lsp.buf.definition()<CR>";
-      desc = "󰈞 Go to Definition";
-    }
-    {
-      key = "<C-h>";
-      mode = "n";
-      silent = true;
-      action = "<C-o>";
-      desc = "󰌍 Return from Definition";
-    }
+    # <C-h> / <C-l> deliberately left to smart-splits (window navigation).
+    # Go-to-definition is <leader>nd or gd; jumping back is the built-in <C-o>.
 
     {
       key = "<leader>bb";
@@ -87,13 +147,6 @@
       silent = true;
       action = "<cmd>Telescope buffers<CR>";
       desc = "󰈔 Find Buffers";
-    }
-    {
-      key = "<leader>ff";
-      mode = "n";
-      silent = true;
-      action = "<cmd>Telescope find_files<CR>";
-      desc = "󰈞 Find Files with Names";
     }
     {
       key = "<leader>fp";
@@ -113,7 +166,7 @@
       key = "K";
       mode = "n";
       silent = true;
-      action = "<cmd>vim.lsp.buf.hover<CR>";
+      action = "<cmd>lua vim.lsp.buf.hover()<CR>";
       desc = "󰋽 Hover Documentation";
     }
     {
@@ -378,13 +431,6 @@
       silent = true;
       action = "<cmd>lua _G.quick_spell_fix()<CR>";
       desc = "󰁨 Quick Fix with First Suggestion";
-    }
-    {
-      key = "<leader>zt";
-      mode = "n";
-      silent = true;
-      action = "<cmd>lua print('Syntax-based spell check available in Python files')<CR>";
-      desc = "󰗊 Toggle Syntax-based Spell Check";
     }
     {
       key = "<leader>tT";
