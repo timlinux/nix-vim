@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `<leader>fr` (recent files) and `<leader>fs` (grep word under cursor).
 - **`<leader>tn` toggles inlay hints** — they are on by default and get noisy
   in Python/TypeScript.
+- **`<leader>ta` toggles autosave**, which is now off by default (see below).
 - **Startup smoke test** (`nix flake check`) — runs the built editor headless,
   fires the startup autocmds and fails on any Lua error, missing colorscheme
   or cleared highlight group. The Nix build only proved the config *evaluated*;
@@ -39,12 +40,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Image popup repositioning is debounced** — `CursorMoved` in a markdown
   buffer used to queue three `defer_fn` timers per event, stacking three
   full window scans per line while scrolling. Now one debounced timer.
-- **Autosave no longer fires on `TextChanged`** — every pause after any
-  normal-mode edit used to write the buffer *and* run conform's synchronous
-  format-on-save (black/nixfmt/prettier, 1s timeout) straight through the
-  typing path. Autosave now runs on `InsertLeave`, `BufLeave` and `FocusLost`,
-  which keeps the same "never lose work" guarantee without reformatting
-  mid-thought.
+- **Autosave is off by default and opt-in from `<leader>ta`** — and it no longer
+  fires on `TextChanged`, where every pause after any normal-mode edit wrote the
+  buffer *and* ran conform's synchronous format-on-save (black/nixfmt/prettier,
+  1s timeout) straight through the typing path. When enabled it saves on
+  `InsertLeave`, `BufLeave` and `FocusLost`. `autowrite`/`autowriteall` follow
+  the same toggle, so no implicit writes happen while it is off.
 - **Formatting is asynchronous** — conform switched from `format_on_save` to
   `format_after_save`, so the write no longer blocks on the formatter.
 - **`nvim-notify` is configured once** — it was set up three times (its nvf

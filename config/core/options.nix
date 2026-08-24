@@ -32,9 +32,10 @@
       shada = "!,'100,<50,s10,h";
       #shadafile = "NONE";
 
-      # Autosave settings
-      autowrite = true; # Auto-save when switching buffers
-      autowriteall = true; # Auto-save on more events
+      # Autosave is opt-in: <leader>ta turns it on and flips these with it
+      # (they write implicitly on buffer switches, :make, :next and friends).
+      autowrite = false;
+      autowriteall = false;
       updatetime = 500; # CursorHold delay and swap file write (single authoritative value)
 
       wrap = false;

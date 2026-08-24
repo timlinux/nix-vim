@@ -65,6 +65,13 @@
       desc = "󰱼 Search Word Under Cursor";
     }
     {
+      key = "<leader>ta";
+      mode = "n";
+      silent = true;
+      action = "<cmd>lua _G.toggle_autosave()<CR>";
+      desc = "󰆓 Toggle Autosave";
+    }
+    {
       key = "<leader>tn";
       mode = "n";
       silent = true;

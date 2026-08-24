@@ -36,10 +36,15 @@ Surround operations use a `gz` / `gZ` prefix to avoid clashing with Flash's `s`.
 
 ## Autosave
 
-Buffers are written for you when you leave insert mode, leave the buffer, or the
-terminal loses focus. Autosave deliberately does **not** run on every text change:
-that put a synchronous formatter run in the middle of typing. `gitcommit`,
-`gitrebase` and `fugitive` buffers are never autosaved.
+Autosave is **off by default**. Toggle it with `<leader>ta`, and which-key shows
+whether it is currently ON or OFF.
+
+When enabled, buffers are written as you leave insert mode, leave the buffer, or
+the terminal loses focus — never on every text change, which used to put a
+synchronous formatter run in the middle of typing. `'autowrite'` and
+`'autowriteall'` follow the same toggle, so nothing writes behind your back while
+autosave is off. `gitcommit`, `gitrebase` and `fugitive` buffers are never
+autosaved.
 
 ## Formatting on save
 
@@ -67,6 +72,7 @@ format on demand.
 | `<leader>fr` | n | Recent files |
 | `<leader>fs` | n | Search for the word under the cursor |
 | `<leader>tn` | n | Toggle inlay hints |
+| `<leader>ta` | n | Toggle autosave |
 
 ## Spell checking
 

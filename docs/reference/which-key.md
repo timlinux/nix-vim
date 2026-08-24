@@ -28,7 +28,7 @@ group. Each group gathers related actions under one letter.
 | `<leader>o` | [GitHub](keymap.md) | 23 |
 | `<leader>r` | [Refactor](keymap.md) | 8 |
 | `<leader>s` | [Session](keymap.md) | 5 |
-| `<leader>t` | [Toggles](keymap.md) | 15 |
+| `<leader>t` | [Toggles](keymap.md) | 16 |
 | `<leader>T` | [Test](keymap.md) | 7 |
 | `<leader>x` | [Lists](keymap.md) | 3 |
 | `<leader>z` | [Spell](keymap.md) | 6 |

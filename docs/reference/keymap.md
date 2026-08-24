@@ -5,7 +5,7 @@
     (the built Neovim is queried headless). It is always in step with the
     configuration — do not edit it by hand.
 
-timvim sets **373** keymaps. The leader is ++space++. Tables below group them the way which-key does.
+timvim sets **399** keymaps. The leader is ++space++. Tables below group them the way which-key does.
 
 ## Leader groups
 
@@ -228,6 +228,7 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 |-----|------|--------|
 | `<leader>tI` | n | Toggle Image Preview |
 | `<leader>tT` | n | Typing Tutor |
+| `<leader>ta` | n | Toggle Autosave |
 | `<leader>tc` | n | Toggle Treesitter Context |
 | `<leader>td` | n | Toggle deleted |
 | `<leader>tg` | n | Toggle Harper Grammar Checker |
@@ -285,6 +286,22 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 | `<CR>` | n | Accept suggestion |
 | `<Esc>` | n | Clear Search Highlight |
 | `<MiddleMouse>` | n | Paste from primary selection |
+| `<Plug>(git-conflict-base)` | n, v | Git Conflict: Choose Base |
+| `<Plug>(git-conflict-both)` | n, v | Git Conflict: Choose Both |
+| `<Plug>(git-conflict-next-conflict)` | n | Git Conflict: Next Conflict |
+| `<Plug>(git-conflict-none)` | n, v | Git Conflict: Choose None |
+| `<Plug>(git-conflict-ours)` | n, v | Git Conflict: Choose Ours |
+| `<Plug>(git-conflict-prev-conflict)` | n | Git Conflict: Previous Conflict |
+| `<Plug>(git-conflict-theirs)` | n, v | Git Conflict: Choose Theirs |
+| `<Plug>(nvim-surround-change)` | n | Change a surrounding pair |
+| `<Plug>(nvim-surround-change-line)` | n | Change a surrounding pair, putting replacements on new lines |
+| `<Plug>(nvim-surround-delete)` | n | Delete a surrounding pair |
+| `<Plug>(nvim-surround-normal)` | n | Add a surrounding pair around a motion (normal mode) |
+| `<Plug>(nvim-surround-normal-cur)` | n | Add a surrounding pair around the current line (normal mode) |
+| `<Plug>(nvim-surround-normal-cur-line)` | n | Add a surrounding pair around the current line, on new lines (normal mode) |
+| `<Plug>(nvim-surround-normal-line)` | n | Add a surrounding pair around a motion, on new lines (normal mode) |
+| `<Plug>(nvim-surround-visual)` | v | Add a surrounding pair around a visual selection |
+| `<Plug>(nvim-surround-visual-line)` | v | Add a surrounding pair around a visual selection, on new lines |
 | `<Tab>` | v | vim.snippet.jump if active, otherwise <Tab> |
 | `@` | v | :help v_@-default |
 | `H` | n, v | Go to start of line |
@@ -342,6 +359,9 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 | `an` | v, o | Select parent (outer) node |
 | `gO` | n | vim.lsp.buf.document_symbol() |
 | `gP` | n | Close All Previews |
+| `gZ` | n, v | Add a surrounding pair around the current line (normal mode) |
+| `gZR` | n | Change a surrounding pair, putting replacements on new lines |
+| `gZZ` | n | Add a surrounding pair around the current line, on new lines (normal mode) |
 | `gc` | n, v, o | Toggle comment |
 | `gcc` | n | Toggle comment line |
 | `gpd` | n | Preview Definition |
@@ -356,6 +376,10 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 | `grt` | n | vim.lsp.buf.type_definition() |
 | `grx` | n | vim.lsp.codelens.run() |
 | `gx` | n, v | Opens filepath or URI under cursor with the system handler (file explorer, web browser, …) |
+| `gz` | n, v | Add a surrounding pair around a motion (normal mode) |
+| `gzd` | n | Delete a surrounding pair |
+| `gzr` | n | Change a surrounding pair |
+| `gzz` | n | Add a surrounding pair around a motion, on new lines (normal mode) |
 | `in` | v, o | Select child (inner) node |
 | `n` | n | Next Search Match (centred) |
 | `r` | o | Remote Flash |
@@ -398,6 +422,8 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 | `(` | Open action for "()" pair |
 | `)` | Close action for "()" pair |
 | `<BS>` | MiniPairs <BS> |
+| `<C-G>Z` | Add a surrounding pair around the cursor, on new lines (insert mode) |
+| `<C-G>z` | Add a surrounding pair around the cursor (insert mode) |
 | `<C-S-V>` | Paste from system clipboard |
 | `<C-S>` | vim.lsp.buf.signature_help() |
 | `<C-T>` | Toggle Terminal |
@@ -411,6 +437,8 @@ timvim sets **373** keymaps. The leader is ++space++. Tables below group them th
 | `<M-]>` | next suggestion |
 | `<M-l>` | Accept suggestion |
 | `<MiddleMouse>` | Paste from primary selection |
+| `<Plug>(nvim-surround-insert)` | Add a surrounding pair around the cursor (insert mode) |
+| `<Plug>(nvim-surround-insert-line)` | Add a surrounding pair around the cursor, on new lines (insert mode) |
 | `<S-Tab>` | vim.snippet.jump if active, otherwise <S-Tab> |
 | `<Tab>` | vim.snippet.jump if active, otherwise <Tab> |
 | `[` | Open action for "[]" pair |
