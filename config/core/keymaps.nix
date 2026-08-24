@@ -65,6 +65,13 @@
       desc = "󰱼 Search Word Under Cursor";
     }
     {
+      key = "<leader>tN";
+      mode = "n";
+      silent = true;
+      action = "<cmd>lua _G.toggle_notifications()<CR>";
+      desc = "󰂚 Toggle Notifications (do not disturb)";
+    }
+    {
       key = "<leader>ta";
       mode = "n";
       silent = true;

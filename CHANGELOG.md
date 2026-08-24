@@ -25,6 +25,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`<leader>tn` toggles inlay hints** — they are on by default and get noisy
   in Python/TypeScript.
 - **`<leader>ta` toggles autosave**, which is now off by default (see below).
+- **A notification policy layer** — severity now sets how long a message stays
+  on screen (error 10s, warning 6s, info 2s), identical messages repeated
+  within two seconds are collapsed, and a documented mutelist drops known
+  chatter (direnv's per-directory export messages, `No information available`
+  from an empty hover, the `position_encoding` deprecation warning). The
+  decision is a pure `_G.notify_policy()` function so it can be tested
+  directly.
+- **`<leader>tN` mutes notifications** for presenting, recording or pairing.
+  Errors still get through, so a silent failure cannot hide behind it.
+- **`<leader>Nl` shows the last message again** — plus `<leader>Na` (all
+  messages) and `<leader>Ne` (errors only). `<leader>Nd` now dismisses noice's
+  messages as well as nvim-notify's.
+- **A Notifications page in the handbook** covering message lifetimes, the
+  mutelist and do-not-disturb.
 - **Startup smoke test** (`nix flake check`) — runs the built editor headless,
   fires the startup autocmds and fails on any Lua error, missing colorscheme
   or cleared highlight group. The Nix build only proved the config *evaluated*;
@@ -52,7 +66,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   module, a duplicate `extraPlugins` copy of the same package, and again in
   `noice.nix`) with three different background colours; whichever DAG entry
   ran last won. Settings now live in the nvf module's `setupOpts`, with
-  animation dropped from 60 to 30 fps.
+  animation dropped from 60 to 30 fps and `minimum_width` from 50 to 20 so a
+  three-word message no longer gets a full-width box.
+- **direnv message suppression moved out of `options.nix`** — it was a
+  `vim.notify` monkey-patch sitting among the editor options; it is now one
+  entry in the notification mutelist, alongside every other message rule.
 - **`mini.pairs` is the only autopair provider** — `nvim-autopairs` was set up
   alongside it, so both plugins reacted to the same keystroke.
 - **Python spell checking relies on treesitter** — `python.nix` no longer

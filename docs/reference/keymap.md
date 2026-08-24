@@ -5,7 +5,7 @@
     (the built Neovim is queried headless). It is always in step with the
     configuration — do not edit it by hand.
 
-timvim sets **399** keymaps. The leader is ++space++. Tables below group them the way which-key does.
+timvim sets **403** keymaps. The leader is ++space++. Tables below group them the way which-key does.
 
 ## Leader groups
 
@@ -168,8 +168,11 @@ timvim sets **399** keymaps. The leader is ++space++. Tables below group them th
 
 | Key | Mode | Action |
 |-----|------|--------|
+| `<leader>Na` | n | All Messages |
 | `<leader>Nd` | n | Dismiss All Notifications |
+| `<leader>Ne` | n | Errors Only |
 | `<leader>Nh` | n | Notification History |
+| `<leader>Nl` | n | Show Last Message |
 
 ### GitHub — `<leader>o`
 
@@ -227,6 +230,7 @@ timvim sets **399** keymaps. The leader is ++space++. Tables below group them th
 | Key | Mode | Action |
 |-----|------|--------|
 | `<leader>tI` | n | Toggle Image Preview |
+| `<leader>tN` | n | Toggle Notifications (do not disturb) |
 | `<leader>tT` | n | Typing Tutor |
 | `<leader>ta` | n | Toggle Autosave |
 | `<leader>tc` | n | Toggle Treesitter Context |

@@ -171,6 +171,7 @@
       ["<leader>tI"] = "󰋩",
       ["<leader>tn"] = "󰋽",
       ["<leader>ta"] = "󰆓",
+      ["<leader>tN"] = "󰂚",
     }
 
     -- Helper to update which-key toggle descriptions with per-item icons
@@ -204,6 +205,7 @@
       _G.update_toggle_desc("<leader>tI", "Image Preview", false)
       _G.update_toggle_desc("<leader>tn", "Inlay Hints", true)
       _G.update_toggle_desc("<leader>ta", "Autosave", false)
+      _G.update_toggle_desc("<leader>tN", "Notifications", true)
     end, 100)
   '';
 

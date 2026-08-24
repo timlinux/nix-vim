@@ -32,6 +32,9 @@ every available group and action, so you rarely need to memorise anything.
 -   :material-language-python: **LSP** — Diagnostics, hover, code actions,
     Trouble, Harper grammar and per-language servers. [Read](lsp.md)
 
+-   :material-bell-outline: **Notifications** — Message lifetimes, muting noise,
+    reading what you missed and do-not-disturb. [Read](notifications.md)
+
 -   :material-bug: **Debugging** — DAP breakpoints, stepping and the debug UI.
     [Read](debugging.md)
 

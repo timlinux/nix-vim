@@ -73,19 +73,6 @@
       secure = true; # Restrict dangerous commands in exrc files
     };
 
-    luaConfigRC.suppress_direnv = ''
-      -- Suppress direnv export messages from cluttering startup
-      local original_notify = vim.notify
-      vim.notify = function(msg, level, opts)
-        if type(msg) == "string" then
-          if msg:match("@mdirenv") or msg:match("^direnv:") then
-            return
-          end
-        end
-        return original_notify(msg, level, opts)
-      end
-    '';
-
     luaConfigRC.spellfile_setup = ''
       -- Set spellfile to a writable location so zg/zw commands work
       local spell_dir = vim.fn.stdpath("data") .. "/spell"
