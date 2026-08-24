@@ -34,10 +34,23 @@ Surround operations use a `gz` / `gZ` prefix to avoid clashing with Flash's `s`.
 | `gzr{old}{new}` | n | Change surrounding (e.g. `gzr"'`) |
 | `gz{char}` | v | Surround the visual selection |
 
+## Autosave
+
+Autosave is **off by default**. Toggle it with `<leader>ta`, and which-key shows
+whether it is currently ON or OFF.
+
+When enabled, buffers are written as you leave insert mode, leave the buffer, or
+the terminal loses focus — never on every text change, which used to put a
+synchronous formatter run in the middle of typing. `'autowrite'` and
+`'autowriteall'` follow the same toggle, so nothing writes behind your back while
+autosave is off. `gitcommit`, `gitrebase` and `fugitive` buffers are never
+autosaved.
+
 ## Formatting on save
 
-Formatting is handled by **conform.nvim** and runs automatically when you save.
-You can also format on demand.
+Formatting is handled by **conform.nvim**. It runs automatically *after* a save
+(asynchronously, so the write never blocks on the formatter), and you can also
+format on demand.
 
 | Key | Mode | Action |
 |-----|------|--------|
@@ -47,6 +60,19 @@ You can also format on demand.
 !!! info "Per-language formatters"
     Nix uses `nixfmt`, Python uses `black`, Rust uses `rustfmt`, and web files
     use `prettier`. See the [LSP guide](lsp.md) for the full language list.
+
+## Navigation comfort
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `<Esc>` | n | Clear search highlight |
+| `n` / `N` | n | Next / previous match, kept centred |
+| `]b` / `[b` | n | Next / previous buffer |
+| `]d` / `[d` | n | Next / previous diagnostic |
+| `<leader>fr` | n | Recent files |
+| `<leader>fs` | n | Search for the word under the cursor |
+| `<leader>tn` | n | Toggle inlay hints |
+| `<leader>ta` | n | Toggle autosave |
 
 ## Spell checking
 

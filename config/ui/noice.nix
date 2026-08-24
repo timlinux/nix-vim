@@ -1,19 +1,13 @@
 { pkgs, ... }:
 {
   vim = {
+    # nvim-notify and nvim-treesitter come from their own nvf modules; listing
+    # them here too loaded the same plugins twice and re-ran notify.setup with
+    # a second, conflicting config. See config/plugins/notify.nix.
     startPlugins = [
       pkgs.vimPlugins.noice-nvim
       pkgs.vimPlugins.nui-nvim
-      pkgs.vimPlugins.nvim-notify
-      pkgs.vimPlugins.nvim-treesitter
     ];
-
-    pluginRC.nvim-notify = ''
-      require("notify").setup({
-        background_colour = "#292525",
-        stages = "fade_in_slide_out"
-      })
-    '';
 
     pluginRC.noice-nvim = ''
       local noice = require("noice")
@@ -155,7 +149,7 @@
               kind = "progress",
               cond = function(message)
                 local client = vim.tbl_get(message.opts, "progress", "client")
-                return client == "lua_ls" or client == "null-ls"
+                return client == "lua_ls"
               end,
             },
             opts = { skip = true },

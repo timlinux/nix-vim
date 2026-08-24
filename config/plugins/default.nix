@@ -5,7 +5,6 @@
     ./conform.nix
     ./debugger.nix
     ./diffview.nix
-    ./filetree.nix
     ./git.nix
     ./goto-preview.nix
     ./hardtime.nix

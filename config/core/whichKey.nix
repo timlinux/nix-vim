@@ -169,6 +169,9 @@
       ["<leader>tu"] = "󰕌",
       ["<leader>tT"] = "󰌌",
       ["<leader>tI"] = "󰋩",
+      ["<leader>tn"] = "󰋽",
+      ["<leader>ta"] = "󰆓",
+      ["<leader>tN"] = "󰂚",
     }
 
     -- Helper to update which-key toggle descriptions with per-item icons
@@ -191,13 +194,18 @@
       _G.update_toggle_desc("<leader>ti", "Indent Guides", false)
       _G.update_toggle_desc("<leader>to", "Code Outline", false)
       _G.update_toggle_desc("<leader>tw", "CursorHold Diagnostics", false)
-      _G.update_toggle_desc("<leader>tv", "Virtual Text Diagnostics", false)
+      -- Virtual text diagnostics start enabled (see plugins/lsp.nix), so the
+      -- initial label has to say ON or the first press reads backwards.
+      _G.update_toggle_desc("<leader>tv", "Virtual Text Diagnostics", true)
       _G.update_toggle_desc("<leader>tp", "Precognition", false)
       _G.update_toggle_desc("<leader>tg", "Harper Grammar", false)
       _G.update_toggle_desc("<leader>tz", "Spell Autopopup", false)
       _G.update_toggle_desc("<leader>tu", "Undo Tree", false)
       _G.update_toggle_desc("<leader>tT", "Typing Tutor", false)
       _G.update_toggle_desc("<leader>tI", "Image Preview", false)
+      _G.update_toggle_desc("<leader>tn", "Inlay Hints", true)
+      _G.update_toggle_desc("<leader>ta", "Autosave", false)
+      _G.update_toggle_desc("<leader>tN", "Notifications", true)
     end, 100)
   '';
 

@@ -5,7 +5,7 @@
     (the built Neovim is queried headless). It is always in step with the
     configuration — do not edit it by hand.
 
-timvim sets **556** keymaps. The leader is ++space++. Tables below group them the way which-key does.
+timvim sets **403** keymaps. The leader is ++space++. Tables below group them the way which-key does.
 
 ## Leader groups
 
@@ -92,8 +92,8 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<leader>fn` | n | Find Nix Files |
 | `<leader>fo` | n | Open Yazi at Current File |
 | `<leader>fp` | n | Find Python Files |
-| `<leader>fr` | n | Resume (previous search) |
-| `<leader>fs` | n | Treesitter |
+| `<leader>fr` | n | Find Recent Files |
+| `<leader>fs` | n | Search Word Under Cursor |
 | `<leader>ft` | n | Open |
 | `<leader>fvb` | n | Git branches |
 | `<leader>fvcb` | n | Git buffer commits |
@@ -168,8 +168,11 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 
 | Key | Mode | Action |
 |-----|------|--------|
+| `<leader>Na` | n | All Messages |
 | `<leader>Nd` | n | Dismiss All Notifications |
+| `<leader>Ne` | n | Errors Only |
 | `<leader>Nh` | n | Notification History |
+| `<leader>Nl` | n | Show Last Message |
 
 ### GitHub — `<leader>o`
 
@@ -227,12 +230,15 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | Key | Mode | Action |
 |-----|------|--------|
 | `<leader>tI` | n | Toggle Image Preview |
+| `<leader>tN` | n | Toggle Notifications (do not disturb) |
 | `<leader>tT` | n | Typing Tutor |
+| `<leader>ta` | n | Toggle Autosave |
 | `<leader>tc` | n | Toggle Treesitter Context |
 | `<leader>td` | n | Toggle deleted |
 | `<leader>tg` | n | Toggle Harper Grammar Checker |
 | `<leader>th` | n | Toggle HardTime |
 | `<leader>ti` | n | Toggle Indent Guides |
+| `<leader>tn` | n | Toggle Inlay Hints |
 | `<leader>to` | n | Toggle Code Outline Panel |
 | `<leader>tp` | n | Toggle Precognition |
 | `<leader>tt` | n | Toggle Floating Terminal |
@@ -271,7 +277,6 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<leader>zf` | n | Quick Fix with First Suggestion |
 | `<leader>zr` | n | Remove Word from Dictionary |
 | `<leader>zs` | n | Toggle Global Spell Check |
-| `<leader>zt` | n | Toggle Syntax-based Spell Check |
 
 ## Direct keys (normal / visual)
 
@@ -283,6 +288,7 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `-` | n | Open Yazi File Manager |
 | `<C-W>d` | n | Show diagnostics under the cursor |
 | `<CR>` | n | Accept suggestion |
+| `<Esc>` | n | Clear Search Highlight |
 | `<MiddleMouse>` | n | Paste from primary selection |
 | `<Plug>(git-conflict-base)` | n, v | Git Conflict: Choose Base |
 | `<Plug>(git-conflict-both)` | n, v | Git Conflict: Choose Both |
@@ -291,11 +297,21 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<Plug>(git-conflict-ours)` | n, v | Git Conflict: Choose Ours |
 | `<Plug>(git-conflict-prev-conflict)` | n | Git Conflict: Previous Conflict |
 | `<Plug>(git-conflict-theirs)` | n, v | Git Conflict: Choose Theirs |
+| `<Plug>(nvim-surround-change)` | n | Change a surrounding pair |
+| `<Plug>(nvim-surround-change-line)` | n | Change a surrounding pair, putting replacements on new lines |
+| `<Plug>(nvim-surround-delete)` | n | Delete a surrounding pair |
+| `<Plug>(nvim-surround-normal)` | n | Add a surrounding pair around a motion (normal mode) |
+| `<Plug>(nvim-surround-normal-cur)` | n | Add a surrounding pair around the current line (normal mode) |
+| `<Plug>(nvim-surround-normal-cur-line)` | n | Add a surrounding pair around the current line, on new lines (normal mode) |
+| `<Plug>(nvim-surround-normal-line)` | n | Add a surrounding pair around a motion, on new lines (normal mode) |
+| `<Plug>(nvim-surround-visual)` | v | Add a surrounding pair around a visual selection |
+| `<Plug>(nvim-surround-visual-line)` | v | Add a surrounding pair around a visual selection, on new lines |
 | `<Tab>` | v | vim.snippet.jump if active, otherwise <Tab> |
 | `@` | v | :help v_@-default |
 | `H` | n, v | Go to start of line |
 | `K` | n | Hover Documentation |
 | `L` | n, v | Go to end of line |
+| `N` | n | Previous Search Match (centred) |
 | `Q` | v | :help v_Q-default |
 | `R` | v, o | Treesitter Search |
 | `S` | n, v, o | Flash Treesitter |
@@ -313,9 +329,9 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `[T` | n | :trewind |
 | `[[` | n | Previous panel suggestion |
 | `[a` | n | :previous |
-| `[b` | n | :bprevious |
+| `[b` | n | Previous Buffer |
 | `[c` | n | Previous hunk |
-| `[d` | n | Jump to the previous diagnostic in the current buffer |
+| `[d` | n | Previous Diagnostic |
 | `[l` | n | :lprevious |
 | `[n` | v | Select previous node |
 | `[q` | n | :cprevious |
@@ -335,9 +351,9 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `]T` | n | :tlast |
 | `]]` | n | Next panel suggestion |
 | `]a` | n | :next |
-| `]b` | n | :bnext |
+| `]b` | n | Next Buffer |
 | `]c` | n | Next hunk |
-| `]d` | n | Jump to the next diagnostic in the current buffer |
+| `]d` | n | Next Diagnostic |
 | `]l` | n | :lnext |
 | `]n` | v | Select next node |
 | `]q` | n | :cnext |
@@ -347,6 +363,9 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `an` | v, o | Select parent (outer) node |
 | `gO` | n | vim.lsp.buf.document_symbol() |
 | `gP` | n | Close All Previews |
+| `gZ` | n, v | Add a surrounding pair around the current line (normal mode) |
+| `gZR` | n | Change a surrounding pair, putting replacements on new lines |
+| `gZZ` | n | Add a surrounding pair around the current line, on new lines (normal mode) |
 | `gc` | n, v, o | Toggle comment |
 | `gcc` | n | Toggle comment line |
 | `gpd` | n | Preview Definition |
@@ -361,7 +380,12 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `grt` | n | vim.lsp.buf.type_definition() |
 | `grx` | n | vim.lsp.codelens.run() |
 | `gx` | n, v | Opens filepath or URI under cursor with the system handler (file explorer, web browser, …) |
+| `gz` | n, v | Add a surrounding pair around a motion (normal mode) |
+| `gzd` | n | Delete a surrounding pair |
+| `gzr` | n | Change a surrounding pair |
+| `gzz` | n | Add a surrounding pair around a motion, on new lines (normal mode) |
 | `in` | v, o | Select child (inner) node |
+| `n` | n | Next Search Match (centred) |
 | `r` | o | Remote Flash |
 | `s` | n, v, o | Flash |
 
@@ -370,10 +394,10 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | Key | Mode | Action |
 |-----|------|--------|
 | `<C-Bslash>` | n | Focus Previous Window/Pane |
-| `<C-H>` | n | Return from Definition |
+| `<C-H>` | n | Focus Window/Pane on the Left |
 | `<C-J>` | n | Focus Window/Pane Below |
 | `<C-K>` | n | Focus Window/Pane Above |
-| `<C-L>` | n | Go to Definition |
+| `<C-L>` | n | Focus Window/Pane on the Right |
 | `<C-S>` | v | vim.lsp.buf.signature_help() |
 | `<C-T>` | n | Toggle Terminal |
 | `<C-W><C-D>` | n | Show diagnostics under the cursor |
@@ -402,6 +426,8 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `(` | Open action for "()" pair |
 | `)` | Close action for "()" pair |
 | `<BS>` | MiniPairs <BS> |
+| `<C-G>Z` | Add a surrounding pair around the cursor, on new lines (insert mode) |
+| `<C-G>z` | Add a surrounding pair around the cursor (insert mode) |
 | `<C-S-V>` | Paste from system clipboard |
 | `<C-S>` | vim.lsp.buf.signature_help() |
 | `<C-T>` | Toggle Terminal |
@@ -415,6 +441,8 @@ timvim sets **556** keymaps. The leader is ++space++. Tables below group them th
 | `<M-]>` | next suggestion |
 | `<M-l>` | Accept suggestion |
 | `<MiddleMouse>` | Paste from primary selection |
+| `<Plug>(nvim-surround-insert)` | Add a surrounding pair around the cursor (insert mode) |
+| `<Plug>(nvim-surround-insert-line)` | Add a surrounding pair around the cursor, on new lines (insert mode) |
 | `<S-Tab>` | vim.snippet.jump if active, otherwise <S-Tab> |
 | `<Tab>` | vim.snippet.jump if active, otherwise <Tab> |
 | `[` | Open action for "[]" pair |

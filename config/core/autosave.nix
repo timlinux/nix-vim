@@ -2,52 +2,68 @@
 {
   vim = {
     luaConfigRC.autosave = ''
-      -- Auto-save configuration
+      -- Auto-save, off by default and toggled with <leader>ta.
+      --
+      -- It used to fire on TextChanged, so every pause after any normal-mode
+      -- edit wrote the buffer *and* ran conform's synchronous format-on-save
+      -- straight through the typing path. When enabled it now saves on leaving
+      -- insert mode, leaving a buffer, and losing focus.
+      _G.autosave_enabled = false
+
       local autosave_group = vim.api.nvim_create_augroup("AutoSave", { clear = true })
 
-      -- Auto-save on various events
-      vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+      -- Filetypes where an implicit write would be wrong
+      local excluded_filetypes = {
+        gitcommit = true,
+        gitrebase = true,
+        fugitive = true,
+      }
+
+      local function save_if_dirty()
+        if not _G.autosave_enabled then
+          return
+        end
+        if vim.bo.modifiable and vim.bo.modified and vim.bo.buftype == "" then
+          if excluded_filetypes[vim.bo.filetype] then
+            return
+          end
+          vim.cmd("silent! write")
+        end
+      end
+
+      vim.api.nvim_create_autocmd({ "InsertLeave", "BufLeave" }, {
+        group = autosave_group,
+        pattern = "*",
+        callback = save_if_dirty,
+      })
+
+      -- Save everything when the terminal/window loses focus
+      vim.api.nvim_create_autocmd("FocusLost", {
         group = autosave_group,
         pattern = "*",
         callback = function()
-          -- Only save if the buffer is modifiable and has been modified
-          if vim.bo.modifiable and vim.bo.modified and vim.bo.buftype == "" then
-            -- Don't save certain file types
-            local ft = vim.bo.filetype
-            local excluded_filetypes = { "gitcommit", "gitrebase", "fugitive" }
-            
-            for _, excluded in ipairs(excluded_filetypes) do
-              if ft == excluded then
-                return
-              end
-            end
-            
-            -- Save the file
-            vim.cmd("silent! write")
+          if _G.autosave_enabled then
+            vim.cmd("silent! wall")
           end
         end,
       })
 
-      -- Auto-save when focus is lost
-      vim.api.nvim_create_autocmd({ "FocusLost" }, {
-        group = autosave_group,
-        pattern = "*",
-        callback = function()
-          vim.cmd("silent! wall")  -- Save all modified buffers
-        end,
-      })
+      _G.toggle_autosave = function()
+        _G.autosave_enabled = not _G.autosave_enabled
 
-      -- Visual feedback for autosave (optional)
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        group = autosave_group,
-        pattern = "*",
-        callback = function()
-          -- Brief message that file was saved
-          vim.defer_fn(function()
-            vim.api.nvim_echo({ { "File saved", "MoreMsg" } }, false, {})
-          end, 100)
-        end,
-      })
+        -- 'autowrite'/'autowriteall' write on buffer switches, :make, :next and
+        -- friends, which is the same implicit-write behaviour under a different
+        -- name -- so they follow the toggle rather than staying on behind it.
+        vim.opt.autowrite = _G.autosave_enabled
+        vim.opt.autowriteall = _G.autosave_enabled
+
+        _G.toggle_states = _G.toggle_states or {}
+        _G.toggle_states["<leader>ta"] = _G.autosave_enabled
+        if _G.update_toggle_desc then
+          _G.update_toggle_desc("<leader>ta", "Autosave", _G.autosave_enabled)
+        end
+        vim.notify("Autosave " .. (_G.autosave_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+      end
     '';
   };
 }

@@ -13,6 +13,8 @@ integration, and comprehensive language support.
 
 ## ✨ Features
 
+Testing the fastestdd
+
 - **🎨 Modern UI**: Beautiful themes with statusline, notifications, and
   enhanced visuals
 - **🧠 AI Integration**: Built-in Claude Code support with chat interface and
@@ -450,7 +452,7 @@ Made with 💗 by [Kartoza](https://kartoza.com) |
 [Donate!](https://github.com/sponsors/timlinux) |
 [GitHub](https://github.com/timlinux/timvim)
 
-Forked from [Schrovimger](https://github.com/jack-thesparrow/schrovimger),
-built using [NVF](https://github.com/notashelf/nvf) and [Nix](https://nixos.org/)
+Forked from [Schrovimger](https://github.com/jack-thesparrow/schrovimger), built
+using [NVF](https://github.com/notashelf/nvf) and [Nix](https://nixos.org/)
 
 </div>

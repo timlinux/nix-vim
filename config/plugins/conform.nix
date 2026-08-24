@@ -22,8 +22,10 @@
           "gofmt"
         ];
       };
-      format_on_save = {
-        timeout_ms = 1000;
+      # format_after_save, not format_on_save: the on-save variant blocks the
+      # write while the formatter runs, which is felt on every autosave. This
+      # runs the formatter asynchronously and writes the result back.
+      format_after_save = {
         lsp_format = "fallback";
       };
     };

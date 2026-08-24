@@ -11,8 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-08-24
+
 ### Added
 
+- **Editing comfort options** — `scrolloff`/`sidescrolloff` (8), a permanently
+  reserved `signcolumn` so text no longer shifts sideways when a diagnostic or
+  gitsign appears, `splitbelow`/`splitright`, `inccommand=split` (live
+  `:substitute` preview), `confirm`, and `timeoutlen=400` for which-key feel.
+- **Conventional navigation keymaps** — `]b`/`[b` (buffers), `]d`/`[d`
+  (diagnostics), `<Esc>` to clear search highlight, centred `n`/`N`,
+  `<leader>fr` (recent files) and `<leader>fs` (grep word under cursor).
+- **`<leader>tn` toggles inlay hints** — they are on by default and get noisy
+  in Python/TypeScript.
+- **`<leader>ta` toggles autosave**, which is now off by default (see below).
+- **A notification policy layer** — severity now sets how long a message stays
+  on screen (error 10s, warning 6s, info 2s), identical messages repeated
+  within two seconds are collapsed, and a documented mutelist drops known
+  chatter (direnv's per-directory export messages, `No information available`
+  from an empty hover, the `position_encoding` deprecation warning). The
+  decision is a pure `_G.notify_policy()` function so it can be tested
+  directly.
+- **`<leader>tN` mutes notifications** for presenting, recording or pairing.
+  Errors still get through, so a silent failure cannot hide behind it.
+- **`<leader>Nl` shows the last message again** — plus `<leader>Na` (all
+  messages) and `<leader>Ne` (errors only). `<leader>Nd` now dismisses noice's
+  messages as well as nvim-notify's.
+- **A Notifications page in the handbook** covering message lifetimes, the
+  mutelist and do-not-disturb.
 - **Startup smoke test** (`nix flake check`) — runs the built editor headless,
   fires the startup autocmds and fails on any Lua error, missing colorscheme
   or cleared highlight group. The Nix build only proved the config *evaluated*;
@@ -28,14 +54,74 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Image popup repositioning is debounced** — `CursorMoved` in a markdown
   buffer used to queue three `defer_fn` timers per event, stacking three
   full window scans per line while scrolling. Now one debounced timer.
+- **Autosave is off by default and opt-in from `<leader>ta`** — and it no longer
+  fires on `TextChanged`, where every pause after any normal-mode edit wrote the
+  buffer *and* ran conform's synchronous format-on-save (black/nixfmt/prettier,
+  1s timeout) straight through the typing path. When enabled it saves on
+  `InsertLeave`, `BufLeave` and `FocusLost`. `autowrite`/`autowriteall` follow
+  the same toggle, so no implicit writes happen while it is off.
+- **Formatting is asynchronous** — conform switched from `format_on_save` to
+  `format_after_save`, so the write no longer blocks on the formatter.
+- **`nvim-notify` is configured once** — it was set up three times (its nvf
+  module, a duplicate `extraPlugins` copy of the same package, and again in
+  `noice.nix`) with three different background colours; whichever DAG entry
+  ran last won. Settings now live in the nvf module's `setupOpts`, with
+  animation dropped from 60 to 30 fps and `minimum_width` from 50 to 20 so a
+  three-word message no longer gets a full-width box.
+- **direnv message suppression moved out of `options.nix`** — it was a
+  `vim.notify` monkey-patch sitting among the editor options; it is now one
+  entry in the notification mutelist, alongside every other message rule.
+- **`mini.pairs` is the only autopair provider** — `nvim-autopairs` was set up
+  alongside it, so both plugins reacted to the same keystroke.
+- **Python spell checking relies on treesitter** — `python.nix` no longer
+  injects `syn region`/`syn match` rules (which re-armed the regex syntax
+  engine on every Python buffer for what treesitter's `@spell` captures
+  already provide) and no longer redefines the whole `<leader>z` keymap set
+  buffer-locally, identically to the global one.
 
 ### Removed
 
 - `config/plugins/minimap.nix` — codewindow was disabled and `vim.minimap.enable`
   had been commented out; nvf also dropped the `codewindow.mappings` option.
+- **Five modules that were never imported** — `config/utility/snacks-nvim.nix`,
+  `config/ui/ufo.nix`, `config/plugins/notes.nix`, `config/plugins/floaterm.nix`
+  and `config/plugins/fzf.nix` (fzf-lua duplicated telescope), plus the empty
+  `config/plugins/snacks/` and top-level `lua/` directories.
+- `config/plugins/filetree.nix` — 59 lines configuring neo-tree with
+  `enable = false`; yazi is the file manager.
+- **Duplicate `telescope.load_extension()` calls** — nvf already loads notify,
+  ui-select, media-files, fzf-native and projects in its own telescope hook, so
+  `luaConfigRC` was loading three of them a second time.
+- **The `BufWritePost` "File saved" echo** — a deferred message on every single
+  write, which noice was already filtering out.
+- **Duplicate `vim.languages.enable*` flags** in `treesitter.nix`, which
+  `languages.nix` already sets.
 
 ### Fixed
 
+- **`K` never showed hover documentation** — it was mapped to
+  `<cmd>vim.lsp.buf.hover<CR>`, which is not a valid Ex command, so pressing it
+  raised an error instead.
+- **`<C-h>`/`<C-l>` were bound twice** — as LSP jump-back/go-to-definition
+  *and* as smart-splits window navigation, so one silently won. Window
+  navigation keeps them; go-to-definition is `<leader>nd`/`gd` and jumping back
+  is the built-in `<C-o>`.
+- **`<leader>cc` (check formatters) threw** — `check_formatters` called
+  `conform.list_formatters()` without requiring conform.
+- **Telescope was set up twice** — a second `require('telescope').setup()` in
+  `luaConfigRC` re-applied telescope's own defaults over the declarative
+  `defaults` block (`file_ignore_patterns`, the `--hidden` vimgrep arguments)
+  and forced the plugin to initialise before nvf's own setup ran. There is now
+  a single setup, from nvf's `setupOpts`.
+- **`<leader>ff` was defined twice** (Nix keymap and Lua), and `<leader>zt` was
+  a no-op that only printed a sentence.
+- **`timeoutlen` was silently overridden** — nvf declares the `tm` alias with a
+  default of 500 and emits it after `timeoutlen` in the generated `init.lua`,
+  so the long-form option never took effect. It is set as `tm`.
+- **The `<leader>tv` which-key label started as OFF** while virtual-text
+  diagnostics start ON, so the first press read backwards.
+- **Wrong key in a help message** — enabling spell check is `<leader>zs`, not
+  `<leader>ss` (which saves a session).
 - **Intermittent blank/unstyled editor on startup** — `octo.nvim` invokes `gh`
   from its `setup()` and raises a hard error when it is missing, but `gh` was
   never in the flake's `runtimeDeps`. nvf emits plugin setup calls into the
@@ -143,6 +229,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hide the statusline on the alpha dashboard via lualine `disabled_filetypes`.
 
 [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
-[Unreleased]: https://github.com/timlinux/nix-vim/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/timlinux/nix-vim/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/timlinux/nix-vim/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/timlinux/nix-vim/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/timlinux/nix-vim/compare/v0.2.0...v0.3.0

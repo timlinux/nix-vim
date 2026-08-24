@@ -169,6 +169,7 @@ nav:
     - Refactoring: user-guide/refactoring.md
     - Terminal & Files: user-guide/terminal-files.md
     - Image Preview: user-guide/image-preview.md
+    - Notifications: user-guide/notifications.md
   - Keybindings:
     - reference/index.md
     - Keyboard Layouts: reference/keyboard.md

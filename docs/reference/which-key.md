@@ -24,14 +24,14 @@ group. Each group gathers related actions under one letter.
 | `<leader>l` | [LSP](keymap.md) | 5 |
 | `<leader>m` | [Markdown](keymap.md) | 2 |
 | `<leader>n` | [Navigate](keymap.md) | 7 |
-| `<leader>N` | [Notifications](keymap.md) | 2 |
+| `<leader>N` | [Notifications](keymap.md) | 5 |
 | `<leader>o` | [GitHub](keymap.md) | 23 |
 | `<leader>r` | [Refactor](keymap.md) | 8 |
 | `<leader>s` | [Session](keymap.md) | 5 |
-| `<leader>t` | [Toggles](keymap.md) | 14 |
+| `<leader>t` | [Toggles](keymap.md) | 17 |
 | `<leader>T` | [Test](keymap.md) | 7 |
 | `<leader>x` | [Lists](keymap.md) | 3 |
-| `<leader>z` | [Spell](keymap.md) | 7 |
+| `<leader>z` | [Spell](keymap.md) | 6 |
 
 ## Non-leader groups
 

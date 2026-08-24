@@ -2,7 +2,6 @@
 {
   imports = [
     ./autocmp.nix
-    ./autopairs.nix
     ./autosave.nix
     ./clipboard.nix
     ./formatting.nix

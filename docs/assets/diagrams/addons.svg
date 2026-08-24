@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1204" height="1101" viewBox="0 0 1204 1101" font-family="Nunito,'Helvetica Neue',Arial,sans-serif">
-<rect width="1204" height="1101" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1204" height="1031" viewBox="0 0 1204 1031" font-family="Nunito,'Helvetica Neue',Arial,sans-serif">
+<rect width="1204" height="1031" fill="#FFFFFF"/>
 <text x="24" y="34" fill="#676869" font-size="12" font-weight="700" letter-spacing="3">TIMVIM · ADD-ONS &amp; COMPONENTS</text>
 <text x="24" y="62" fill="#383939" font-size="24" font-weight="800">Everything in the box, by purpose</text>
-<text x="24" y="84" fill="#676869" font-size="12.5">50 add-ons on by default · 3 optional · grouped into 10 families. Full links in the table below.</text>
+<text x="24" y="84" fill="#676869" font-size="12.5">46 add-ons on by default · 1 optional · grouped into 10 families. Full links in the table below.</text>
 <rect x="24" y="108" width="372" height="128" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M24,118 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#DF9E2F"/>
 <text x="36" y="130" fill="#383939" font-size="15" font-weight="800">AI Assistance</text>
@@ -41,7 +41,7 @@
 <circle cx="432" cy="410" r="3.5" fill="#06969A"/>
 <text x="442" y="414" fill="#383939" font-size="12.5" font-weight="700">esbonio (RST/Sphinx)</text>
 <text x="442" y="422" fill="#676869" font-size="10.5">reStructuredText and Sphinx language server.</text>
-<rect x="808" y="108" width="372" height="268" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="808" y="108" width="372" height="233" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M808,118 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#569FC6"/>
 <text x="820" y="130" fill="#FFFFFF" font-size="15" font-weight="800">Navigation &amp; Search</text>
 <text x="820" y="146" fill="#FFFFFF" font-size="10.5" opacity="0.92">Jump to files, symbols and text fast</text>
@@ -49,20 +49,17 @@
 <text x="834" y="169" fill="#383939" font-size="12.5" font-weight="700">Telescope</text>
 <text x="834" y="177" fill="#676869" font-size="10.5">Fuzzy finder for files, grep, symbols and media.</text>
 <circle cx="824" cy="200" r="3.5" fill="#569FC6"/>
-<text x="834" y="204" fill="#383939" font-size="12.5" font-weight="700">fzf-lua</text>
-<text x="834" y="212" fill="#676869" font-size="10.5">Blazing-fast fzf-powered pickers.</text>
+<text x="834" y="204" fill="#383939" font-size="12.5" font-weight="700">flash.nvim</text>
+<text x="834" y="212" fill="#676869" font-size="10.5">Label-based jump-to-anywhere motions.</text>
 <circle cx="824" cy="235" r="3.5" fill="#569FC6"/>
-<text x="834" y="239" fill="#383939" font-size="12.5" font-weight="700">flash.nvim</text>
-<text x="834" y="247" fill="#676869" font-size="10.5">Label-based jump-to-anywhere motions.</text>
+<text x="834" y="239" fill="#383939" font-size="12.5" font-weight="700">goto-preview</text>
+<text x="834" y="247" fill="#676869" font-size="10.5">Peek definitions and references in a floating window.</text>
 <circle cx="824" cy="270" r="3.5" fill="#569FC6"/>
-<text x="834" y="274" fill="#383939" font-size="12.5" font-weight="700">goto-preview</text>
-<text x="834" y="282" fill="#676869" font-size="10.5">Peek definitions and references in a floating window.</text>
+<text x="834" y="274" fill="#383939" font-size="12.5" font-weight="700">outline.nvim</text>
+<text x="834" y="282" fill="#676869" font-size="10.5">A symbol outline sidebar for the current file.</text>
 <circle cx="824" cy="305" r="3.5" fill="#569FC6"/>
-<text x="834" y="309" fill="#383939" font-size="12.5" font-weight="700">outline.nvim</text>
-<text x="834" y="317" fill="#676869" font-size="10.5">A symbol outline sidebar for the current file.</text>
-<circle cx="824" cy="340" r="3.5" fill="#569FC6"/>
-<text x="834" y="344" fill="#383939" font-size="12.5" font-weight="700">smart-splits.nvim</text>
-<text x="834" y="352" fill="#676869" font-size="10.5">Seamless split navigation and resizing.</text>
+<text x="834" y="309" fill="#383939" font-size="12.5" font-weight="700">smart-splits.nvim</text>
+<text x="834" y="317" fill="#676869" font-size="10.5">Seamless split navigation and resizing.</text>
 <rect x="24" y="256" width="372" height="163" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M24,266 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#CC0403"/>
 <text x="36" y="278" fill="#FFFFFF" font-size="15" font-weight="800">Git &amp; GitHub</text>
@@ -76,28 +73,28 @@
 <circle cx="40" cy="383" r="3.5" fill="#CC0403"/>
 <text x="50" y="387" fill="#383939" font-size="12.5" font-weight="700">octo.nvim</text>
 <text x="50" y="395" fill="#676869" font-size="10.5">Review and manage GitHub issues and pull requests.</text>
-<rect x="808" y="396" width="372" height="268" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
-<path d="M808,406 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#569FC6"/>
-<text x="820" y="418" fill="#FFFFFF" font-size="15" font-weight="800">Editing &amp; Motion</text>
-<text x="820" y="434" fill="#FFFFFF" font-size="10.5" opacity="0.92">Surround, yank, multi-cursor and refactor</text>
+<rect x="808" y="361" width="372" height="268" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<path d="M808,371 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#569FC6"/>
+<text x="820" y="383" fill="#FFFFFF" font-size="15" font-weight="800">Editing &amp; Motion</text>
+<text x="820" y="399" fill="#FFFFFF" font-size="10.5" opacity="0.92">Surround, yank, multi-cursor and refactor</text>
+<circle cx="824" cy="418" r="3.5" fill="#569FC6"/>
+<text x="834" y="422" fill="#383939" font-size="12.5" font-weight="700">nvim-surround</text>
+<text x="834" y="430" fill="#676869" font-size="10.5">Add, change and delete surrounding pairs.</text>
 <circle cx="824" cy="453" r="3.5" fill="#569FC6"/>
-<text x="834" y="457" fill="#383939" font-size="12.5" font-weight="700">nvim-surround</text>
-<text x="834" y="465" fill="#676869" font-size="10.5">Add, change and delete surrounding pairs.</text>
+<text x="834" y="457" fill="#383939" font-size="12.5" font-weight="700">yanky.nvim</text>
+<text x="834" y="465" fill="#676869" font-size="10.5">A yank ring with history and put-with-formatting.</text>
 <circle cx="824" cy="488" r="3.5" fill="#569FC6"/>
-<text x="834" y="492" fill="#383939" font-size="12.5" font-weight="700">yanky.nvim</text>
-<text x="834" y="500" fill="#676869" font-size="10.5">A yank ring with history and put-with-formatting.</text>
+<text x="834" y="492" fill="#383939" font-size="12.5" font-weight="700">multicursors.nvim</text>
+<text x="834" y="500" fill="#676869" font-size="10.5">Multiple cursors for simultaneous edits.</text>
 <circle cx="824" cy="523" r="3.5" fill="#569FC6"/>
-<text x="834" y="527" fill="#383939" font-size="12.5" font-weight="700">multicursors.nvim</text>
-<text x="834" y="535" fill="#676869" font-size="10.5">Multiple cursors for simultaneous edits.</text>
+<text x="834" y="527" fill="#383939" font-size="12.5" font-weight="700">refactoring.nvim</text>
+<text x="834" y="535" fill="#676869" font-size="10.5">Extract, inline and other language-aware refactors.</text>
 <circle cx="824" cy="558" r="3.5" fill="#569FC6"/>
-<text x="834" y="562" fill="#383939" font-size="12.5" font-weight="700">refactoring.nvim</text>
-<text x="834" y="570" fill="#676869" font-size="10.5">Extract, inline and other language-aware refactors.</text>
+<text x="834" y="562" fill="#383939" font-size="12.5" font-weight="700">hardtime.nvim</text>
+<text x="834" y="570" fill="#676869" font-size="10.5">Coaches better motions by nudging away from bad habits.</text>
 <circle cx="824" cy="593" r="3.5" fill="#569FC6"/>
-<text x="834" y="597" fill="#383939" font-size="12.5" font-weight="700">hardtime.nvim</text>
-<text x="834" y="605" fill="#676869" font-size="10.5">Coaches better motions by nudging away from bad habits.</text>
-<circle cx="824" cy="628" r="3.5" fill="#569FC6"/>
-<text x="834" y="632" fill="#383939" font-size="12.5" font-weight="700">mini.nvim</text>
-<text x="834" y="640" fill="#676869" font-size="10.5">A suite of small editing utilities (pairs, colours).</text>
+<text x="834" y="597" fill="#383939" font-size="12.5" font-weight="700">mini.nvim</text>
+<text x="834" y="605" fill="#676869" font-size="10.5">A suite of small editing utilities (pairs, colours).</text>
 <rect x="24" y="439" width="372" height="163" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M24,449 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#DF9E2F"/>
 <text x="36" y="461" fill="#383939" font-size="15" font-weight="800">Debug &amp; Test</text>
@@ -111,7 +108,7 @@
 <circle cx="40" cy="566" r="3.5" fill="#DF9E2F"/>
 <text x="50" y="570" fill="#383939" font-size="12.5" font-weight="700">neotest</text>
 <text x="50" y="578" fill="#676869" font-size="10.5">Run and review tests without leaving the editor.</text>
-<rect x="416" y="466" width="372" height="478" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<rect x="416" y="466" width="372" height="408" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M416,476 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#8A8B8B"/>
 <text x="428" y="488" fill="#FFFFFF" font-size="15" font-weight="800">UI &amp; Appearance</text>
 <text x="428" y="504" fill="#FFFFFF" font-size="10.5" opacity="0.92">Dashboard, statusline, folds and visuals</text>
@@ -134,24 +131,18 @@
 <text x="442" y="702" fill="#383939" font-size="12.5" font-weight="700">indent-blankline.nvim</text>
 <text x="442" y="710" fill="#676869" font-size="10.5">Indent guides (toggle with a keymap).</text>
 <circle cx="432" cy="733" r="3.5" fill="#8A8B8B"/>
-<text x="442" y="737" fill="#383939" font-size="12.5" font-weight="700">nvim-ufo</text>
-<text x="442" y="745" fill="#676869" font-size="10.5">Modern, LSP-aware code folding.</text>
+<text x="442" y="737" fill="#383939" font-size="12.5" font-weight="700">nvim-colorizer.lua</text>
+<text x="442" y="745" fill="#676869" font-size="10.5">Highlights colour codes with their actual colour.</text>
 <circle cx="432" cy="768" r="3.5" fill="#8A8B8B"/>
-<text x="442" y="772" fill="#383939" font-size="12.5" font-weight="700">nvim-colorizer.lua</text>
-<text x="442" y="780" fill="#676869" font-size="10.5">Highlights colour codes with their actual colour.</text>
+<text x="442" y="772" fill="#383939" font-size="12.5" font-weight="700">precognition.nvim</text>
+<text x="442" y="780" fill="#676869" font-size="10.5">Shows the motions available from your cursor.</text>
 <circle cx="432" cy="803" r="3.5" fill="#8A8B8B"/>
-<text x="442" y="807" fill="#383939" font-size="12.5" font-weight="700">precognition.nvim</text>
-<text x="442" y="815" fill="#676869" font-size="10.5">Shows the motions available from your cursor.</text>
-<circle cx="432" cy="838" r="3.5" fill="#8A8B8B"/>
-<text x="442" y="842" fill="#383939" font-size="12.5" font-weight="700">smear-cursor.nvim</text>
-<text x="442" y="850" fill="#676869" font-size="10.5">A smooth animated cursor trail.</text>
-<circle cx="432" cy="873" r="3.5" fill="#8A8B8B"/>
-<text x="442" y="877" fill="#383939" font-size="12.5" font-weight="700">snacks.nvim</text>
-<text x="442" y="885" fill="#676869" font-size="10.5">A collection of quality-of-life UI helpers.</text>
-<circle cx="432" cy="908" r="3.5" fill="#676869"/>
-<text x="442" y="912" fill="#676869" font-size="12.5" font-weight="700">bufferline (nvim)  ·  off</text>
-<text x="442" y="920" fill="#676869" font-size="10.5">A bubbled tabline of open buffers.</text>
-<rect x="24" y="622" width="372" height="268" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<text x="442" y="807" fill="#383939" font-size="12.5" font-weight="700">smear-cursor.nvim</text>
+<text x="442" y="815" fill="#676869" font-size="10.5">A smooth animated cursor trail.</text>
+<circle cx="432" cy="838" r="3.5" fill="#676869"/>
+<text x="442" y="842" fill="#676869" font-size="12.5" font-weight="700">bufferline (nvim)  ·  off</text>
+<text x="442" y="850" fill="#676869" font-size="10.5">A bubbled tabline of open buffers.</text>
+<rect x="24" y="622" width="372" height="198" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
 <path d="M24,632 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#06969A"/>
 <text x="36" y="644" fill="#FFFFFF" font-size="15" font-weight="800">Files &amp; Terminal</text>
 <text x="36" y="660" fill="#FFFFFF" font-size="10.5" opacity="0.92">File manager, terminals and undo history</text>
@@ -162,45 +153,36 @@
 <text x="50" y="718" fill="#383939" font-size="12.5" font-weight="700">toggleterm.nvim</text>
 <text x="50" y="726" fill="#676869" font-size="10.5">Managed floating and split terminals.</text>
 <circle cx="40" cy="749" r="3.5" fill="#06969A"/>
-<text x="50" y="753" fill="#383939" font-size="12.5" font-weight="700">vim-floaterm</text>
-<text x="50" y="761" fill="#676869" font-size="10.5">Extra floating-terminal windows.</text>
+<text x="50" y="753" fill="#383939" font-size="12.5" font-weight="700">undotree</text>
+<text x="50" y="761" fill="#676869" font-size="10.5">Visualise and traverse the undo history.</text>
 <circle cx="40" cy="784" r="3.5" fill="#06969A"/>
-<text x="50" y="788" fill="#383939" font-size="12.5" font-weight="700">undotree</text>
-<text x="50" y="796" fill="#676869" font-size="10.5">Visualise and traverse the undo history.</text>
-<circle cx="40" cy="819" r="3.5" fill="#06969A"/>
-<text x="50" y="823" fill="#383939" font-size="12.5" font-weight="700">image.nvim</text>
-<text x="50" y="831" fill="#676869" font-size="10.5">Render images inline via the Kitty graphics protocol.</text>
-<circle cx="40" cy="854" r="3.5" fill="#676869"/>
-<text x="50" y="858" fill="#676869" font-size="12.5" font-weight="700">neo-tree.nvim  ·  off</text>
-<text x="50" y="866" fill="#676869" font-size="10.5">A tree file explorer (off; Yazi is the default).</text>
-<rect x="808" y="684" width="372" height="128" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
-<path d="M808,694 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#8A8B8B"/>
-<text x="820" y="706" fill="#FFFFFF" font-size="15" font-weight="800">Writing &amp; Docs</text>
-<text x="820" y="722" fill="#FFFFFF" font-size="10.5" opacity="0.92">Markdown, grammar and note-taking</text>
-<circle cx="824" cy="741" r="3.5" fill="#8A8B8B"/>
-<text x="834" y="745" fill="#383939" font-size="12.5" font-weight="700">Markdown tools</text>
-<text x="834" y="753" fill="#676869" font-size="10.5">Live browser preview and Markdown filetype tweaks.</text>
-<circle cx="824" cy="776" r="3.5" fill="#676869"/>
-<text x="834" y="780" fill="#676869" font-size="12.5" font-weight="700">obsidian.nvim  ·  off</text>
-<text x="834" y="788" fill="#676869" font-size="10.5">Obsidian vault note-taking (off by default).</text>
-<rect x="808" y="832" width="372" height="233" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
-<path d="M808,842 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#569FC6"/>
-<text x="820" y="854" fill="#FFFFFF" font-size="15" font-weight="800">Workflow &amp; Extras</text>
-<text x="820" y="870" fill="#FFFFFF" font-size="10.5" opacity="0.92">Sessions, projects and practice tools</text>
+<text x="50" y="788" fill="#383939" font-size="12.5" font-weight="700">image.nvim</text>
+<text x="50" y="796" fill="#676869" font-size="10.5">Render images inline via the Kitty graphics protocol.</text>
+<rect x="808" y="649" width="372" height="93" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<path d="M808,659 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#8A8B8B"/>
+<text x="820" y="671" fill="#FFFFFF" font-size="15" font-weight="800">Writing &amp; Docs</text>
+<text x="820" y="687" fill="#FFFFFF" font-size="10.5" opacity="0.92">Markdown, grammar and note-taking</text>
+<circle cx="824" cy="706" r="3.5" fill="#8A8B8B"/>
+<text x="834" y="710" fill="#383939" font-size="12.5" font-weight="700">Markdown tools</text>
+<text x="834" y="718" fill="#676869" font-size="10.5">Live browser preview and Markdown filetype tweaks.</text>
+<rect x="808" y="762" width="372" height="233" rx="10" fill="#FFFFFF" stroke="#D1D1D1"/>
+<path d="M808,772 q0,-10 10,-10 h352 q10,0 10,10 v36 h-372 z" fill="#569FC6"/>
+<text x="820" y="784" fill="#FFFFFF" font-size="15" font-weight="800">Workflow &amp; Extras</text>
+<text x="820" y="800" fill="#FFFFFF" font-size="10.5" opacity="0.92">Sessions, projects and practice tools</text>
+<circle cx="824" cy="819" r="3.5" fill="#569FC6"/>
+<text x="834" y="823" fill="#383939" font-size="12.5" font-weight="700">nvim-session-manager</text>
+<text x="834" y="831" fill="#676869" font-size="10.5">Save and restore editing sessions per project.</text>
+<circle cx="824" cy="854" r="3.5" fill="#569FC6"/>
+<text x="834" y="858" fill="#383939" font-size="12.5" font-weight="700">project.nvim</text>
+<text x="834" y="866" fill="#676869" font-size="10.5">Automatic project-root detection and switching.</text>
 <circle cx="824" cy="889" r="3.5" fill="#569FC6"/>
-<text x="834" y="893" fill="#383939" font-size="12.5" font-weight="700">nvim-session-manager</text>
-<text x="834" y="901" fill="#676869" font-size="10.5">Save and restore editing sessions per project.</text>
+<text x="834" y="893" fill="#383939" font-size="12.5" font-weight="700">leetcode.nvim</text>
+<text x="834" y="901" fill="#676869" font-size="10.5">Solve LeetCode problems inside Neovim.</text>
 <circle cx="824" cy="924" r="3.5" fill="#569FC6"/>
-<text x="834" y="928" fill="#383939" font-size="12.5" font-weight="700">project.nvim</text>
-<text x="834" y="936" fill="#676869" font-size="10.5">Automatic project-root detection and switching.</text>
+<text x="834" y="928" fill="#383939" font-size="12.5" font-weight="700">typr (nvzone)</text>
+<text x="834" y="936" fill="#676869" font-size="10.5">A built-in typing-speed practice game.</text>
 <circle cx="824" cy="959" r="3.5" fill="#569FC6"/>
-<text x="834" y="963" fill="#383939" font-size="12.5" font-weight="700">leetcode.nvim</text>
-<text x="834" y="971" fill="#676869" font-size="10.5">Solve LeetCode problems inside Neovim.</text>
-<circle cx="824" cy="994" r="3.5" fill="#569FC6"/>
-<text x="834" y="998" fill="#383939" font-size="12.5" font-weight="700">typr (nvzone)</text>
-<text x="834" y="1006" fill="#676869" font-size="10.5">A built-in typing-speed practice game.</text>
-<circle cx="824" cy="1029" r="3.5" fill="#569FC6"/>
-<text x="834" y="1033" fill="#383939" font-size="12.5" font-weight="700">direnv.vim</text>
-<text x="834" y="1041" fill="#676869" font-size="10.5">Loads per-project environments via direnv.</text>
-<text x="24" y="1093" fill="#676869" font-size="10.5">Auto-generated from lib/addons.json — kept in lock-step with the live config. Coloured dots follow each family; grey = off by default.</text>
+<text x="834" y="963" fill="#383939" font-size="12.5" font-weight="700">direnv.vim</text>
+<text x="834" y="971" fill="#676869" font-size="10.5">Loads per-project environments via direnv.</text>
+<text x="24" y="1023" fill="#676869" font-size="10.5">Auto-generated from lib/addons.json — kept in lock-step with the live config. Coloured dots follow each family; grey = off by default.</text>
 </svg>

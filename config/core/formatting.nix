@@ -21,6 +21,7 @@
 
       -- Debug function to check available formatters
       _G.check_formatters = function()
+        local conform = require("conform")
         local ft = vim.bo.filetype
         local formatters = conform.list_formatters(0)
         vim.notify("Filetype: " .. ft, vim.log.levels.INFO)
@@ -42,7 +43,7 @@
       _G.quick_spell_fix = function()
         -- Check if spell checking is enabled
         if not vim.opt.spell:get() then
-          print('Spell checking is not enabled. Use <leader>ss to enable it.')
+          print('Spell checking is not enabled. Use <leader>zs to enable it.')
           return
         end
         
