@@ -16,7 +16,6 @@
     ./notify.nix
     ./nvzone-typr.nix
     ./octo.nix
-    ./minimap.nix
     ./neotest.nix
     ./persistent-breakpoints.nix
     ./projects.nix

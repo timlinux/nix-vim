@@ -8,17 +8,32 @@
     extraPlugins = {
       octo = {
         package = octo-plugin;
+        # Guarded: octo's setup() raises if `gh` is not on PATH, and nvf emits
+        # these setup calls into the main chunk of init.lua -- so an uncaught
+        # error here silently aborts every module configured after it. `gh` is
+        # in runtimeDeps now; this keeps a future missing external tool from
+        # taking the whole editor down with it.
         setup = ''
-          require('octo').setup({
-            default_remote = {"upstream", "origin"},
-            picker = "telescope",
-            picker_config = {
-              use_emojis = true,
-            },
-            suppress_missing_scope = {
-              projects_v2 = true,
-            },
-          })
+          local octo_ok, octo_err = pcall(function()
+            require('octo').setup({
+              default_remote = {"upstream", "origin"},
+              picker = "telescope",
+              picker_config = {
+                use_emojis = true,
+              },
+              suppress_missing_scope = {
+                projects_v2 = true,
+              },
+            })
+          end)
+          if not octo_ok then
+            vim.schedule(function()
+              vim.notify(
+                "octo.nvim disabled: " .. tostring(octo_err),
+                vim.log.levels.WARN
+              )
+            end)
+          end
         '';
       };
     };

@@ -11,6 +11,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Startup smoke test** (`nix flake check`) — runs the built editor headless,
+  fires the startup autocmds and fails on any Lua error, missing colorscheme
+  or cleared highlight group. The Nix build only proved the config *evaluated*;
+  this proves it *loads*.
+
+### Changed
+
+- **Updated flake inputs** — nixpkgs `2026-07-18` → `2026-08-22`, nvf
+  `2026-07-19` → `2026-08-22`, flake-parts `2026-07-01` → `2026-08-01`,
+  octo.nvim `2026-07-09` → `2026-07-30`.
+- **Migrated `vim.languages.ts`** — nvf split it into `typescript` (ts/js) and
+  `tsx`; both are now enabled explicitly.
+- **Image popup repositioning is debounced** — `CursorMoved` in a markdown
+  buffer used to queue three `defer_fn` timers per event, stacking three
+  full window scans per line while scrolling. Now one debounced timer.
+
+### Removed
+
+- `config/plugins/minimap.nix` — codewindow was disabled and `vim.minimap.enable`
+  had been commented out; nvf also dropped the `codewindow.mappings` option.
+
+### Fixed
+
+- **Intermittent blank/unstyled editor on startup** — `octo.nvim` invokes `gh`
+  from its `setup()` and raises a hard error when it is missing, but `gh` was
+  never in the flake's `runtimeDeps`. nvf emits plugin setup calls into the
+  *main chunk* of `init.lua`, so that error aborted every module configured
+  after it — including the colorscheme, leaving an editor with no highlight
+  groups at all. Whether startup succeeded depended entirely on whether `gh`
+  happened to be inherited from the surrounding shell, which is why it appeared
+  intermittent and unreproducible. `gh` is now a declared runtime dependency,
+  and octo's `setup()` is wrapped in `pcall` so a missing external tool can
+  never again take down the rest of startup. Caught by the new smoke test.
+- **Alpha dashboard raced session restore** — the alpha dashboard and
+  `nvim-session-manager` both registered `VimEnter` autocmds and raced.
+  Session restore deletes *every* buffer before sourcing the session file,
+  while alpha only checked `argc() == 0`, so alpha would start into a
+  half-torn-down window (or stomp a freshly restored session). Alpha now
+  stands down whenever any real buffer is already on screen.
+- **Colorscheme could leave the UI unstyled** — `config/themes/kartoza-theme.nix`
+  runs `highlight clear` from `luaConfigRC` (i.e. *after* `pluginRC`), wiping
+  groups plugins had already set, then restored only ~40 of them. Added the
+  missing groups (`Pmenu`, `SignColumn`, `EndOfBuffer`, `NonText`, `Folded`,
+  `StatusLineNC`, tabline, messages, diffs, diagnostics, search) and made the
+  theme re-apply on `ColorScheme` so a later scheme swap cannot strip the UI.
+  `Visual` also used the `Normal` background, making selections invisible.
+- **image.nvim had one option declared twice with opposite values** —
+  `editorOnlyRenderWhenFocused = true` (camelCase, not an image.nvim option,
+  silently ignored) alongside `editor_only_render_when_focused = false`.
+  Rendering while unfocused is a screen-corruption risk under the Kitty
+  graphics protocol. Now a single key, set to `true`.
+- **Python DAP and Claude Code fought over port 9000** — `claudecode.nvim`
+  binds it on every startup (`auto_start = true`). The Python debug adapter
+  now defaults to debugpy's conventional 5678.
+- Dropped a stray no-op global assignment (`transparent_background = true`)
+  from the theme.
+
 ## [0.4.0] - 2026-07-20
 
 ### Added

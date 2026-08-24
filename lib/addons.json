@@ -73,7 +73,6 @@
     { "name": "smear-cursor.nvim",      "category": "ui",   "purpose": "A smooth animated cursor trail.",                              "url": "https://github.com/sphamba/smear-cursor.nvim",          "configs": ["config/utility/smear-cursor.nix"] },
     { "name": "snacks.nvim",            "category": "ui",   "purpose": "A collection of quality-of-life UI helpers.",                  "url": "https://github.com/folke/snacks.nvim",                  "configs": ["config/utility/snacks-nvim.nix"] },
     { "name": "bufferline (nvim)",      "category": "ui",   "purpose": "A bubbled tabline of open buffers.",                           "url": "https://github.com/akinsho/bufferline.nvim",            "enabled": false, "configs": ["config/ui/tabline.nix"] },
-    { "name": "codewindow.nvim",        "category": "ui",   "purpose": "A code minimap in the gutter.",                                "url": "https://github.com/gorbit99/codewindow.nvim",           "enabled": false, "configs": ["config/plugins/minimap.nix"] },
 
     { "name": "yazi.nvim",              "category": "files","purpose": "The primary file manager (Yazi TUI in a float).",              "url": "https://github.com/mikavilpas/yazi.nvim",               "configs": ["config/plugins/yazi.nix"] },
     { "name": "toggleterm.nvim",        "category": "files","purpose": "Managed floating and split terminals.",                        "url": "https://github.com/akinsho/toggleterm.nvim",            "configs": ["config/plugins/terminal.nix"] },

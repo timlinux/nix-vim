@@ -81,6 +81,11 @@
             pkgs.fzf
             pkgs.chafa
             pkgs.git
+            # octo.nvim calls `gh` from its setup() and raises a hard error if
+            # it is missing. An uncaught error there aborts the rest of
+            # init.lua -- including the colorscheme -- so a missing `gh`
+            # presented as an unstyled/blank editor, not as a broken :Octo.
+            pkgs.gh
             pkgs.go
             pkgs.gopls
             pkgs.gotools # Contains goimports for Go formatting
@@ -298,6 +303,41 @@
           };
 
           checks = {
+            ## ✅ 0) Startup smoke test
+            #
+            # Runs the *built* editor headless and fails on any Lua error raised
+            # during startup. The Nix build only proves the config evaluates;
+            # this proves it actually loads. See lib/smoke.lua.
+            smoke =
+              pkgs.runCommand "timvim-smoke"
+                {
+                  nativeBuildInputs = [ pkgs.coreutils ];
+                }
+                ''
+                  echo "🚬 Running timvim startup smoke test..."
+
+                  # Neovim needs a writable HOME/XDG tree; the sandbox has none.
+                  export HOME="$TMPDIR/home"
+                  export XDG_CONFIG_HOME="$HOME/.config"
+                  export XDG_CACHE_HOME="$HOME/.cache"
+                  export XDG_DATA_HOME="$HOME/.local/share"
+                  export XDG_STATE_HOME="$HOME/.local/state"
+                  mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME"
+                  cd "$HOME"
+
+                  export SMOKE_REPORT="$TMPDIR/smoke.txt"
+                  if ! ${wrappedNeovim}/bin/nvim --headless \
+                        -c 'luafile ${./lib/smoke.lua}' +qa; then
+                    echo "❌ Startup smoke test failed:"
+                    cat "$SMOKE_REPORT" 2>/dev/null || true
+                    exit 1
+                  fi
+
+                  cat "$SMOKE_REPORT" 2>/dev/null || true
+                  echo "✅ Editor starts clean"
+                  touch $out
+                '';
+
             ## ✅ 1) Format check
             format-check =
               pkgs.runCommand "format-check"

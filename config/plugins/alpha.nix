@@ -203,19 +203,39 @@
       dashboard.opts.opts.noautocmd = true
       alpha.setup(dashboard.opts)
 
-      -- Force alpha to show on startup unless a file was passed as argument
+      -- Show alpha on startup unless a file was passed as argument.
+      --
+      -- nvim-session-manager also restores on VimEnter (autoload_mode =
+      -- "CurrentDir"). Both used to fire unconditionally and race: whichever
+      -- landed second stomped the first, and alpha starting into a window that
+      -- session restore was tearing down rendered an empty dashboard -- the
+      -- intermittent "black screen on startup". So we defer past the restore
+      -- and only claim the screen if nothing else has put real work on it.
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()
           -- Re-apply T2A highlights after colorscheme/theme has loaded
           setup_t2a_highlights()
-          if vim.fn.argc() == 0 then
-            -- Close any buffers that other plugins may have opened, then show alpha
-            vim.schedule(function()
-              if vim.bo.filetype ~= "alpha" then
-                require("alpha").start(false)
-              end
-            end)
+          if vim.fn.argc() > 0 then
+            return
           end
+          vim.schedule(function()
+            if vim.bo.filetype == "alpha" then
+              return
+            end
+            -- Any loaded, listed, named buffer means a session (or another
+            -- plugin) already owns the screen. Deliberately plugin-agnostic
+            -- rather than probing session-manager's internals.
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if
+                vim.api.nvim_buf_is_loaded(buf)
+                and vim.bo[buf].buflisted
+                and vim.api.nvim_buf_get_name(buf) ~= ""
+              then
+                return
+              end
+            end
+            require("alpha").start(false)
+          end)
         end,
       })
     '';

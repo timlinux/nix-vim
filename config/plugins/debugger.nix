@@ -59,6 +59,9 @@
         vim.notify('Found debugpy version: ' .. version, vim.log.levels.INFO)
       end
 
+      -- Port 5678 is debugpy's conventional default. This previously used
+      -- 9000, which claudecode.nvim binds on every startup (auto_start = true),
+      -- so a debug session and the Claude Code server fought over one port.
       -- Setup the executable adapter (for launch configurations)
       dap.adapters.python = {
         type = 'executable',
@@ -78,7 +81,7 @@
         cb({
           type = 'server',
           host = '127.0.0.1',
-          port = config.port or tonumber(vim.g.dap_python_port) or 9000,
+          port = config.port or tonumber(vim.g.dap_python_port) or 5678,
         })
       end
 
@@ -114,7 +117,7 @@
       name = 'Standard Attach',
       connect = {
         host = '127.0.0.1',
-        port = tonumber(vim.g.dap_python_port) or 9000
+        port = tonumber(vim.g.dap_python_port) or 5678
       },
       pathMappings = {
         {
@@ -144,7 +147,7 @@
         return
       end
 
-      local default_port = vim.g.dap_python_port or "9000"
+      local default_port = vim.g.dap_python_port or "5678"
       vim.ui.input({ prompt = "Python debug port: ", default = default_port }, function(input)
         if not input or input == "" then return end
         local port = tonumber(input)
@@ -267,7 +270,7 @@
     -- Kill any hanging debug processes function
     local function kill_debug_processes()
       vim.fn.system('pkill -f "debugpy.adapter"')
-      local port = vim.g.dap_python_port or "9000"
+      local port = vim.g.dap_python_port or "5678"
       vim.fn.system('pkill -f "debugpy.*' .. port .. '"')
       vim.notify('Killed debug processes', vim.log.levels.INFO)
     end

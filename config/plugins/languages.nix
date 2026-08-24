@@ -96,7 +96,15 @@
         dap.enable = true;
       };
 
-      ts = {
+      # nvf split the old `ts` module into `typescript` (ts/js) and `tsx`.
+      typescript = {
+        enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+
+      tsx = {
         enable = true;
         format.enable = true;
         lsp.enable = true;

@@ -5,7 +5,7 @@
     `lib/gen-addons-docs.py`, and drift-checked against the live
     `config/` tree. Do not edit by hand — run `nix run .#handbook-addons`.
 
-timvim bundles **54 add-ons** — 50 enabled out of the box and 4 shipped but off by default — on top of the [NVF](https://github.com/notashelf/nvf) framework. The [Overview](index.md) shows them as a visual map; the full list is grouped into 10 families below.
+timvim bundles **53 add-ons** — 50 enabled out of the box and 3 shipped but off by default — on top of the [NVF](https://github.com/notashelf/nvf) framework. The [Overview](index.md) shows them as a visual map; the full list is grouped into 10 families below.
 
 ## AI Assistance
 
@@ -95,7 +95,6 @@ timvim bundles **54 add-ons** — 50 enabled out of the box and 4 shipped but of
 | [smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) | A smooth animated cursor trail. | ✅ On |
 | [snacks.nvim](https://github.com/folke/snacks.nvim) | A collection of quality-of-life UI helpers. | ✅ On |
 | [bufferline (nvim)](https://github.com/akinsho/bufferline.nvim) | A bubbled tabline of open buffers. | ⚪ Off |
-| [codewindow.nvim](https://github.com/gorbit99/codewindow.nvim) | A code minimap in the gutter. | ⚪ Off |
 
 ## Files & Terminal
 

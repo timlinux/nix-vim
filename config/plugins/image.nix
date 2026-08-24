@@ -165,24 +165,32 @@
       -- Use multiple events to catch image popup creation
       local group = vim.api.nvim_create_augroup('ImagePopupReposition', { clear = true })
 
-      -- Poll for new floating windows after cursor events in markdown files
+      -- Poll for new floating windows after cursor events in markdown files.
+      --
+      -- This used to queue three defer_fn timers per event, so holding `j` in a
+      -- markdown buffer stacked three window scans per line. One debounced
+      -- timer catches the popup just as well without the pile-up.
+      local reposition_timer = nil
+      local function schedule_reposition()
+        if reposition_timer then
+          reposition_timer:stop()
+        end
+        reposition_timer = vim.defer_fn(function()
+          reposition_timer = nil
+          find_and_reposition_image_popups()
+        end, 150)
+      end
+
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorMoved' }, {
         group = group,
         pattern = { '*.md', '*.markdown', '*.norg', '*.wiki' },
-        callback = function()
-          -- Multiple deferred checks to catch the popup
-          vim.defer_fn(find_and_reposition_image_popups, 50)
-          vim.defer_fn(find_and_reposition_image_popups, 150)
-          vim.defer_fn(find_and_reposition_image_popups, 300)
-        end,
+        callback = schedule_reposition,
       })
 
       -- Also check when any window is created
       vim.api.nvim_create_autocmd('WinNew', {
         group = group,
-        callback = function()
-          vim.defer_fn(find_and_reposition_image_popups, 50)
-        end,
+        callback = schedule_reposition,
       })
     '';
   };

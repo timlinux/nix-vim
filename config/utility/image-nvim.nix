@@ -5,7 +5,6 @@
         enable = true;
         setupOpts = {
           backend = "kitty";
-          editorOnlyRenderWhenFocused = true;
           integrations = {
             markdown = {
               enabled = true;
@@ -39,8 +38,12 @@
             "popup"
             ""
           ];
-          editor_only_render_when_focused = false;
-          tmux_show_only_in_active_window = false;
+          # Was declared twice: `editorOnlyRenderWhenFocused = true` (camelCase,
+          # not an image.nvim option, silently ignored) and this one set to the
+          # opposite. Kitty graphics writes escape sequences straight to the tty,
+          # so rendering while unfocused is a live screen-corruption risk.
+          editor_only_render_when_focused = true;
+          tmux_show_only_in_active_window = true;
         };
       };
       img-clip.enable = true;
