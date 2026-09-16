@@ -20,6 +20,15 @@
           -- Enable particle effects for extra flair
           particles_enabled = true,
 
+          -- The plugin animates a floating-window cursor trail on every
+          -- CursorMoved(I), and typing moves the cursor one column per
+          -- character -- so with this left at the plugin's own default
+          -- (true) every keystroke was scheduling a ~60fps redraw loop
+          -- purely for a 1-cell trail nobody can register at typing speed.
+          -- Normal-mode navigation still gets the full smear/particle
+          -- effect; only insert-mode typing skips it.
+          smear_insert_mode = false,
+
           -- Smooth trail settings
           stiffness = 0.8,              -- Cursor movement responsiveness
           trailing_stiffness = 0.4,      -- Trail follows slower for longer effect

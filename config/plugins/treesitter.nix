@@ -90,5 +90,31 @@ in
     # The enableFormat / enableTreesitter / enableExtraDiagnostics flags live in
     # languages.nix; this module only turns on the per-language grammars.
     languages = treeSitterEnables;
+
+    # nvf wires treesitter's indentexpr with one global `FileType *`
+    # autocmd (see the generated init.lua's "treesitter-autocommands"
+    # section), so there is no per-language switch for it. The typing
+    # benchmark (lib/bench-typing.lua) measured markdown's indentexpr at
+    # roughly 50-100x the cost of Lua's -- median 0.35ms/keystroke vs
+    # 0.003ms with it off, because it has to reparse across the markdown /
+    # markdown_inline injection boundary on every edit -- while
+    # render-markdown, blink-cmp's doc popup/ghost text, and spellcheck
+    # made no measurable difference. Prose doesn't need code-aware
+    # reindentation anyway; smartindent/autoindent (core/options.nix)
+    # already covers it.
+    #
+    # This autocmd has to be registered *after* nvf's own so it overrides
+    # rather than races it -- luaConfigRC entries land in a later generated
+    # init.lua section than pluginRC ones (where nvf's own treesitter
+    # autocmd lives), so that ordering is automatic here.
+    luaConfigRC.treesitter-markdown-indent = ''
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        group = vim.api.nvim_create_augroup("MarkdownIndentOverride", { clear = true }),
+        callback = function()
+          vim.bo.indentexpr = ""
+        end,
+      })
+    '';
   };
 }
