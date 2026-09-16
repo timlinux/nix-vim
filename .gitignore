@@ -73,3 +73,9 @@ sbom/
 
 # mkdocs-material social/http cache
 http_cache.sqlite
+
+# Typing-latency benchmark: scratch buffers + local results DB. Timings are
+# machine-dependent, so the history is personal, not something to share via
+# git. See lib/bench_record.py.
+.bench-tmp/
+benchmarks/
