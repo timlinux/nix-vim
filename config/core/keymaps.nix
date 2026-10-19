@@ -5,8 +5,8 @@
       key = "<Esc>";
       mode = "n";
       silent = true;
-      action = "<cmd>nohlsearch<CR>";
-      desc = "󰸱 Clear Search Highlight";
+      action = "<cmd>lua vim.cmd('nohlsearch'); if _G.close_diagnostics_side_panel then _G.close_diagnostics_side_panel() end<CR>";
+      desc = "󰸱 Clear Search Highlight / Close Diagnostics Panel";
     }
     {
       key = "n";
@@ -180,7 +180,7 @@
       key = "K";
       mode = "n";
       silent = true;
-      action = "<cmd>lua vim.lsp.buf.hover()<CR>";
+      action = "<cmd>lua _G.show_hover_in_panel()<CR>";
       desc = "󰋽 Hover Documentation";
     }
     {
@@ -271,8 +271,8 @@
       key = "<leader>tw";
       mode = "n";
       silent = true;
-      action = "<cmd>lua _G.toggle_cursorhold_diagnostics(); _G.update_toggle_desc('<leader>tw', 'CursorHold Diagnostics', _G.cursorhold_diagnostics_enabled)<CR>";
-      desc = "󰀪 Toggle CursorHold Error Tooltips";
+      action = "<cmd>lua _G.toggle_cursorhold_diagnostics(); _G.update_toggle_desc('<leader>tw', 'Diagnostics Side Panel', _G.cursorhold_diagnostics_enabled)<CR>";
+      desc = "󰀪 Toggle Diagnostics Side Panel";
     }
     {
       key = "<leader>tv";
@@ -356,7 +356,7 @@
       key = "<leader>nh";
       mode = "n";
       silent = true;
-      action = "<cmd>lua vim.lsp.buf.hover()<CR>";
+      action = "<cmd>lua _G.show_hover_in_panel()<CR>";
       desc = "󰋽 Hover Documentation";
     }
     {
