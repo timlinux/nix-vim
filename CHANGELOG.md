@@ -11,6 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-19
+
+### Added
+
+- **A diagnostics/hover side panel** replacing inline ghost-text annotations.
+  `CursorHold` opens a wrapped, full-height panel on the right edge showing
+  the current line's diagnostics, or hover docs when the cursor sits on a
+  word with no diagnostics. `K` and `<leader>nh` now route into the same
+  panel instead of opening their own floating box. Dismiss with `<Esc>`
+  (alongside its existing search-highlight-clear job) or by moving the
+  cursor. Toggle with `<leader>tw`.
+- **A typing-latency benchmark**, run on every pre-commit via
+  `nix run .#bench-typing`, recording per-keystroke timing into
+  `benchmarks/typing-bench.sqlite` so a regression from a flake input bump
+  or a local edit gets caught rather than guessed at (warns, does not block;
+  see `lib/bench_record.py` for the `--strict` gate).
+- **A `timvim` CLI** (`lib/timvim.sh`), namespacing the project's
+  `nix run .#foo` apps under one branded entry point in `nix develop`.
+
+### Changed
+
+- Virtual-text (ghost text) diagnostics are now off by default
+  (`<leader>tv` re-enables them) — the side panel above is the primary way
+  to read full messages without the inline shift-to-the-right problem long
+  messages caused on narrow terminals.
+- Markdown buffers no longer run treesitter's `indentexpr`: it cost roughly
+  50-100x a normal keystroke (median 0.35ms vs 0.003ms) reparsing across the
+  markdown/markdown_inline injection boundary on every edit, for a filetype
+  that doesn't need code-aware reindentation.
+- `smear-cursor`'s trail animation is now skipped in insert mode, where it
+  was redrawing a one-cell trail on every keystroke at a rate typing speed
+  can't register.
+
 ## [0.5.0] - 2026-08-24
 
 ### Added
