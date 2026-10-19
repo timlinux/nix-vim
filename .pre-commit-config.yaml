@@ -9,3 +9,17 @@ repos:
         language: system
         files: \.nix$
 
+      - id: typing-benchmark
+        name: Record typing-latency benchmark
+        # Runs on every commit, not just config changes -- a regression can
+        # come from a flake input bump (nvf, a plugin) just as easily as a
+        # local edit, and only catching the latter would miss those. `nix
+        # run` is cheap here regardless: it's a store lookup, not a rebuild,
+        # whenever wrappedNeovim's inputs haven't actually changed. Records
+        # to benchmarks/typing-bench.sqlite and warns (does not block) on
+        # regression; see lib/bench_record.py for the --strict gate.
+        entry: nix run .#bench-typing -- --trigger pre-commit
+        language: system
+        always_run: true
+        pass_filenames: false
+

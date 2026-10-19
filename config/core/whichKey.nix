@@ -193,10 +193,11 @@
       _G.update_toggle_desc("<leader>tc", "Treesitter Context", false)
       _G.update_toggle_desc("<leader>ti", "Indent Guides", false)
       _G.update_toggle_desc("<leader>to", "Code Outline", false)
-      _G.update_toggle_desc("<leader>tw", "CursorHold Diagnostics", false)
-      -- Virtual text diagnostics start enabled (see plugins/lsp.nix), so the
-      -- initial label has to say ON or the first press reads backwards.
-      _G.update_toggle_desc("<leader>tv", "Virtual Text Diagnostics", true)
+      -- Diagnostics side panel starts enabled and virtual text starts
+      -- disabled (see plugins/lsp.nix), so the initial labels have to match
+      -- or the first press of each reads backwards.
+      _G.update_toggle_desc("<leader>tw", "Diagnostics Side Panel", true)
+      _G.update_toggle_desc("<leader>tv", "Virtual Text Diagnostics", false)
       _G.update_toggle_desc("<leader>tp", "Precognition", false)
       _G.update_toggle_desc("<leader>tg", "Harper Grammar", false)
       _G.update_toggle_desc("<leader>tz", "Spell Autopopup", false)

@@ -112,6 +112,11 @@
             '';
           };
 
+          # Namespaced CLI (`timvim <command>`) for `nix develop`, so the
+          # project's `nix run .#foo` apps don't have to be typed out in
+          # full. One implementation, two entry points -- see lib/timvim.sh.
+          timvimCli = pkgs.writeShellScriptBin "timvim" (builtins.readFile ./lib/timvim.sh);
+
           # mkdocs stack for the handbook (mirrors the kartoza/InfrastructureMapper
           # and timlinux/qgis-dev-env documentation toolchain). Used directly on
           # PATH so `nix run .#handbook*` needs no nested `nix develop`.
@@ -302,6 +307,30 @@
             meta.description = "Assemble the handbook into a Kartoza-branded PDF";
           };
 
+          # Typing-latency benchmark: types two fixed documents (code, prose)
+          # into the *built* editor headless and records per-keystroke timing
+          # stats into benchmarks/typing-bench.sqlite, keyed on the current
+          # commit. See lib/bench-typing.lua and lib/bench_record.py.
+          apps.bench-typing = {
+            type = "app";
+            program = toString (
+              pkgs.writeShellScript "timvim-bench-typing" ''
+                set -euo pipefail
+                export PATH=${
+                  pkgs.lib.makeBinPath [
+                    pkgs.python3
+                    pkgs.git
+                    pkgs.coreutils
+                  ]
+                }:$PATH
+                export NVIM_BIN=${wrappedNeovim}/bin/nvim
+                export BENCH_LUA_SCRIPT=${./lib/bench-typing.lua}
+                exec python3 ${./lib/bench_record.py} "$@"
+              ''
+            );
+            meta.description = "Benchmark typing latency in the built editor and record it to SQLite";
+          };
+
           checks = {
             ## ✅ 0) Startup smoke test
             #
@@ -395,6 +424,7 @@
             packages =
               with pkgs;
               [
+                timvimCli
                 catimg # Terminal image viewer for alpha header generation
                 chafa
                 epub-thumbnailer
